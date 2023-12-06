@@ -4,7 +4,7 @@ var title = null;
 
 // Called once the page has loaded
 document.addEventListener('DOMContentLoaded', function(event) {
-	loadProducts();
+	loadContacts();
 	loadCategories();
 });
 
@@ -12,43 +12,43 @@ document.addEventListener('DOMContentLoaded', function(event) {
 // Make sure NOT to include the sheet name in the URL (just the project name!)
 var projectUrl = 'https://api.sheety.co/717be535cbdc62b32a74693105db3bd4/exportConnector%20(1)';
 
-function loadProducts() {
-	fetch(projectUrl + '/products')
-	.then((response) => response.json())
-	.then(json => {
-		this.products = json.products.sort((a, b) => {
-			return a.votes < b.votes;
-		})
-		showAllProducts();
-	});
+function loadContacts() {
+    fetch(projectUrl + '/contacts')
+    .then((response) => response.json())
+    .then(json => {
+        this.contacts = json.contacts.sort((a, b) => {
+            return a.votes < b.votes;
+        })
+        showAllContacts();
+    });
 }
 
 function loadCategories() {
-	fetch(projectUrl + '/categories')
-	.then((response) => response.json())
-	.then(json => {
-		this.categories = json.categories;
-		drawCategories();
-	})
+    fetch(projectUrl + '/categories')
+    .then((response) => response.json())
+    .then(json => {
+        this.categories = json.categories;
+        drawCategories();
+    })
 }
 
-function drawProducts(products) {
-	var template = Handlebars.compile(document.getElementById("products-template").innerHTML);
-	document.getElementById('products-container').innerHTML = template({
-		title: this.title,
-		products: products	
-	});
+function drawContacts(contacts) {
+    var template = Handlebars.compile(document.getElementById("contacts-template").innerHTML);
+    document.getElementById('contacts-container').innerHTML = template({
+        title: this.title,
+        contacts: contacts    
+    });
 }
 
 function drawCategories() {
-	var template = Handlebars.compile(document.getElementById("menu-template").innerHTML);
-	console.log('draw ', this.products);
-	document.getElementById('menu-container').innerHTML = template(this.categories);
+    var template = Handlebars.compile(document.getElementById("menu-template").innerHTML);
+    console.log('draw ', this.contacts);
+    document.getElementById('menu-container').innerHTML = template(this.categories);
 }
 
-function showAllProducts() {
-	this.title = "All Products";
-	drawProducts(this.products);
+function showAllContacts() {
+	this.title = "All Contacts";
+	drawContacts(this.contacts);
 }
 
 function showCategory(category) {
