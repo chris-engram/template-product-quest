@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 var projectUrl = 'https://api.sheety.co/717be535cbdc62b32a74693105db3bd4/exportConnector%20(1)';
 
 function loadProducts() {
-	fetch(projectUrl + '/contacts')
+	fetch(projectUrl + '/products')
 	.then((response) => response.json())
 	.then(json => {
 		this.products = json.products.sort((a, b) => {
