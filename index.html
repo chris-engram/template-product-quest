@@ -1,20 +1,26 @@
 <html>
+
 <head>
-<title>Product Quest</title>
+	<title>Product Quest</title>
 
-<!-- External libraries -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- External libraries -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+		crossorigin="anonymous"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Template stuff -->
-<link rel="stylesheet" href="styles.css">
-<script src="main.js"></script>
+	<!-- Template stuff -->
+	<link rel="stylesheet" href="styles.css">
+	<script src="main.js"></script>
 
-<!-- Template for the main menu / categories -->
-<script id="menu-template" type="text/x-handlebars-template">
+	<!-- Template for the main menu / categories -->
+	<script id="menu-template" type="text/x-handlebars-template">
 	<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm mb-4">
 		<a class="navbar-brand" href="#" onclick="showAllProducts();">Product Quest</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,8 +43,8 @@
 	</nav>
 </script>
 
-<!-- Template for the products -->
-<script id="products-template" type="text/x-handlebars-template">
+	<!-- Template for the products -->
+	<script id="products-template" type="text/x-handlebars-template">
 	<h3>{{title}}</h3>
 	<div class="shadow-sm bg-white rounded-lg">
 		{{#each this.products as |product|}}
@@ -62,7 +68,13 @@
 	</div>
 </script>
 </head>
+
 <body class="bg-light">
+	<header>
+        <!-- other header content -->
+        <input type="text" id="search-input" placeholder="Search products...">
+        <button onclick="searchProducts()">Search</button>
+    </header>
 	<div id="menu-container"></div>
 	<div class="container" id="products-container">
 		<!-- Loading indicator: this gets replaced when we have products -->
@@ -74,5 +86,14 @@
 	<div class="container" id="footer">
 		<div class="text-muted text-center p-3">Powered by <a href="https://sheety.co">Sheety</a></div>
 	</div>
+	<script>
+        // Add your JavaScript function here
+        function searchProducts() {
+            var searchQuery = document.getElementById('search-input').value.toLowerCase();
+            var filteredProducts = this.products.filter(product => product.name.toLowerCase().includes(searchQuery));
+            drawProducts(filteredProducts);
+        }
+    </script>
 </body>
+
 </html>
