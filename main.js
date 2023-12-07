@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 });
 
 function loadContactsAlternative() {
-    var url = "https://leads-search.engram-7ab.workers.dev/queryXataLeads/get-xata-leads";
+    var url = "https://leads-search.engram-7ab.workers.dev/queryXataLeads/get-leads-by-id";
     var body = {
         "table": "engramProfiles",
         "records": [
