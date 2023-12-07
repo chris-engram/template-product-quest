@@ -51,6 +51,8 @@
 			<div class="media border-bottom p-3" id="contact-{{contact.id}}">
 				{{#if contact.data.profilePhotoUrl}}
 					<img src="{{contact.data.profilePhotoUrl}}" width="50" class="mr-3">
+				{{else}}
+					<img src="https://via.placeholder.com/50" width="50" class="mr-3">
 				{{/if}}
 				<div class="media-body">
 					<h6 class="m-0">
