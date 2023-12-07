@@ -36,7 +36,7 @@
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-					<a href="mailto:phill@sheety.co?subject=Submit Contact" class="btn btn-outline-primary">Submit Contact</a>
+					<a href="mailto:chris@engram.nexus?subject=Submit Contact" class="btn btn-outline-primary">Submit Contact</a>
 				</li>
 			</ul>
 		</div>
@@ -49,32 +49,37 @@
 	<div class="shadow-sm bg-white rounded-lg">
 		{{#each this.contacts as |contact|}}
 			<div class="media border-bottom p-3" id="contact-{{contact.id}}">
-				<img src="{{contact.iconUrl}}" width="50" class="mr-3">
+				{{#if contact.data.profilePhotoUrl}}
+					<img src="{{contact.data.profilePhotoUrl}}" width="50" class="mr-3">
+				{{/if}}
 				<div class="media-body">
 					<h6 class="m-0">
-						<a href="{{contact.website}}" target="_blank">{{contact.name}}</a>
+						{{#if contact.data.linkedinUrl}}
+							<a href="{{contact.data.linkedinUrl}}" target="_blank">{{contact.data.fullName}}</a>
+						{{else}}
+							{{contact.data.fullName}}
+						{{/if}}
 					</h6>
-					<p class="m-0">{{contact.shortDescription}}</p>
-					<p class="m-0 text-muted"><small>{{contact.category}}</small></p>
+					{{#if contact.data.title}}
+						<p class="m-0">{{contact.data.title}}</p>
+						<p class="m-0 text-muted"><small>{{contact.data.title}}</small></p>
+					{{/if}}
 				</div>
-				<button class="btn btn-outline-primary" onclick="upvotecontact({{contact.id}});" {{#if contact.hasVoted}}disabled{{/if}}>
-					&#x21e7; {{contact.votes}}
-				</button>
 			</div>
 		{{/each}}
 		{{#unless this.contacts}}
 			<p class="p-5 text-center text-muted">No contacts found</p>
 		{{/unless}}
 	</div>
-</script>
+	</script>
 </head>
 
 <body class="bg-light">
 	<header>
-        <!-- other header content -->
-        <input type="text" id="search-input" placeholder="Search contacts...">
-        <button onclick="searchContacts()">Search</button>
-    </header>
+		<!-- other header content -->
+		<input type="text" id="search-input" placeholder="Search contacts...">
+		<button onclick="searchContacts()">Search</button>
+	</header>
 	<div id="menu-container"></div>
 	<div class="container" id="contacts-container">
 		<!-- Loading indicator: this gets replaced when we have contacts -->
@@ -84,16 +89,16 @@
 		</div>
 	</div>
 	<div class="container" id="footer">
-		<div class="text-muted text-center p-3">Powered by <a href="https://sheety.co">Sheety</a></div>
+		<div class="text-muted text-center p-3">Powered by <a href="https://engram.nexus">Engram Nexus</a></div>
 	</div>
 	<script>
-        // Add your JavaScript function here
-        function searchContacts() {
-            var searchQuery = document.getElementById('search-input').value.toLowerCase();
-            var filteredContacts = this.contacts.filter(contact => contact.name.toLowerCase().includes(searchQuery));
-            drawContacts(filteredContacts);
-        }
-    </script>
+		// Add your JavaScript function here
+		function searchContacts() {
+			var searchQuery = document.getElementById('search-input').value.toLowerCase();
+			var filteredContacts = this.contacts.filter(contact => contact.data.fullName.toLowerCase().includes(searchQuery));
+			drawContacts(filteredContacts);
+		}
+	</script>
 </body>
 
 </html>

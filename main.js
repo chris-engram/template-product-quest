@@ -4,9 +4,38 @@ var title = null;
 
 // Called once the page has loaded
 document.addEventListener('DOMContentLoaded', function(event) {
-	loadContacts();
-	loadCategories();
+	//loadContacts();
+    loadContactsAlternative();
+	//loadCategories();
 });
+
+function loadContactsAlternative() {
+    var url = "https://leads-search.engram-7ab.workers.dev/queryXataLeads/get-xata-leads";
+    var body = {
+        "table": "engramProfiles",
+        "records": [
+            "rec_cjs8v0faif5k399aks6g",
+            "rec_cjs8v0faif5k399aks50",
+            "rec_cjs8v0faif5k399aks5g",
+            "rec_cjs8v0faif5k399aks60"
+        ]
+    };
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    })
+    .then((response) => response.json())
+    .then(json => {
+        this.contacts = json.data.sort((a, b) => {
+            return a.votes < b.votes;
+        })
+        showAllContacts();
+    });
+}
 
 // Replace this with your Sheety URL
 // Make sure NOT to include the sheet name in the URL (just the project name!)
