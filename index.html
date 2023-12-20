@@ -116,6 +116,19 @@
 			drawContacts(filteredContacts);
 		}
 	</script>
+	<div class="offcanvas offcanvas-end" tabindex="-1" id="contactProfile" aria-labelledby="contactProfileLabel">
+		<div class="offcanvas-header">
+			<h5 id="contactProfileLabel">Contact Profile</h5>
+			<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body">
+			<img id="contactProfilePhoto" src="" width="50" class="mb-3">
+			<h6 id="contactProfileName"></h6>
+			<p id="contactProfileTitle"></p>
+			<a id="contactProfileLinkedIn" href="" target="_blank">LinkedIn</a>
+			<a id="contactProfileWebsite" href="" target="_blank">Website</a>
+		</div>
+	</div>
 </body>
 
 </html>

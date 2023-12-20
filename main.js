@@ -9,6 +9,24 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	//loadCategories();
 });
 
+document.querySelectorAll('.media').forEach(function(media) {
+    media.addEventListener('click', function() {
+        var contactId = this.id.split('-')[1];
+        var contact = contacts.find(function(contact) {
+            return contact.id === contactId;
+        });
+
+        document.getElementById('contactProfilePhoto').src = contact.data.profilePhotoUrl || 'https://via.placeholder.com/50';
+        document.getElementById('contactProfileName').textContent = contact.data.fullName;
+        document.getElementById('contactProfileTitle').textContent = contact.data.title;
+        document.getElementById('contactProfileLinkedIn').href = contact.data.linkedinUrl;
+        document.getElementById('contactProfileWebsite').href = contact.data.websiteUrl;
+
+        var contactProfile = new bootstrap.Offcanvas(document.getElementById('contactProfile'));
+        contactProfile.show();
+    });
+});
+
 function loadContactsAlternative() {
     var urlParams = new URLSearchParams(window.location.search);
     var blobId = urlParams.get('blobId');
