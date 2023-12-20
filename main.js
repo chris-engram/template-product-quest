@@ -10,9 +10,12 @@ document.addEventListener('DOMContentLoaded', function(event) {
 });
 
 function loadContactsAlternative() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var blobId = urlParams.get('blobId');
+
     var url = "https://leads-search.engram-7ab.workers.dev/manageSearchBlobs/get-main-records";
     var body = {
-        "id": "rec_cm0sptp3cihb3o93hon0"
+        "id": blobId
     };
 
     fetch(url, {
