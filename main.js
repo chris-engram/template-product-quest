@@ -10,27 +10,19 @@ document.addEventListener('DOMContentLoaded', function(event) {
 });
 
 function loadContactsAlternative() {
-    var url = "https://leads-search.engram-7ab.workers.dev/queryXataLeads/get-leads-by-id";
+    var url = "https://leads-search.engram-7ab.workers.dev/manageSearchBlobs/get-main-records";
     var body = {
-        "table": "engramProfiles",
-        "records": [
-            "rec_cjs8v0faif5k399aks6g",
-            "rec_cjs8v0faif5k399aks50",
-            "rec_cjs8v0faif5k399aks5g",
-            "rec_cjs8v0faif5k399aks60"
-        ]
+        "id": "rec_cm0sptp3cihb3o93hon0"
     };
 
     fetch(url, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(body)
     })
     .then((response) => response.json())
     .then(json => {
-        this.contacts = json.data.sort((a, b) => {
+        this.contacts = json.data.profiles.sort((a, b) => {
             return a.votes < b.votes;
         })
         showAllContacts();
