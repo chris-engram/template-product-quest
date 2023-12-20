@@ -3,10 +3,10 @@ var categories = null;
 var title = null;
 
 // Called once the page has loaded
-document.addEventListener('DOMContentLoaded', function(event) {
-	//loadContacts();
+document.addEventListener('DOMContentLoaded', function() {
+    //loadContacts();
     loadContactsAlternative();
-	//loadCategories();
+    //loadCategories();
 });
 
 document.querySelectorAll('.media').forEach(function(media) {
@@ -89,16 +89,16 @@ function drawCategories() {
 }
 
 function showAllContacts() {
-	this.title = "All Contacts";
-	drawContacts(this.contacts);
+    this.title = "All Contacts";
+    drawContacts(this.contacts);
 }
 
 function showCategory(category) {
-	this.title = category;
-	let filteredProducts = this.products.filter(product => {
-		return product.category == category;
-	});
-	drawProducts(filteredProducts);
+    this.title = category;
+    let filteredProducts = this.products.filter(product => {
+        return product.category == category;
+    });
+    products(filteredProducts);
 }
 
 function upvoteProduct(id) {
