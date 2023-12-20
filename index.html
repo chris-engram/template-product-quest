@@ -3,6 +3,9 @@
 <head>
 	<title>Lightweight Xata Manager</title>
 
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 	<!-- External libraries -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -66,6 +69,18 @@
 						<p class="m-0">{{contact.data.title}}</p>
 						<p class="m-0 text-muted"><small>{{contact.data.title}}</small></p>
 					{{/if}}
+					<div class="d-flex align-items-center justify-content-end">
+						{{#if contact.data.linkedinUrl}}
+							<a href="{{contact.data.linkedinUrl}}" target="_blank" class="mr-2">
+								<i class="fab fa-linkedin"></i>
+							</a>
+						{{/if}}
+						{{#if contact.data.websiteUrl}}
+							<a href="{{contact.data.websiteUrl}}" target="_blank">
+								<i class="fas fa-globe"></i>
+							</a>
+						{{/if}}
+					</div>
 				</div>
 			</div>
 		{{/each}}
