@@ -24,27 +24,27 @@
 
 	<!-- Template for the main menu / categories -->
 	<script id="menu-template" type="text/x-handlebars-template">
-	<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm mb-4">
-		<a class="navbar-brand" href="#" onclick="showAllContacts();">Xata Manager</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				{{#each this as |category|}}
+		<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm mb-4">
+			<a class="navbar-brand" href="#" onclick="showAllContacts();">Xata Manager</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					{{#each this as |category|}}
+						<li class="nav-item">
+							<a class="nav-link" href="#" onclick="showCategory('{{category.name}}');">{{category.name}}</a>
+						</li>
+					{{/each}}
+				</ul>
+				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="#" onclick="showCategory('{{category.name}}');">{{category.name}}</a>
+						<a href="mailto:chris@engram.nexus?subject=Submit Contact" class="btn btn-outline-primary">Submit Contact</a>
 					</li>
-				{{/each}}
-			</ul>
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
-					<a href="mailto:chris@engram.nexus?subject=Submit Contact" class="btn btn-outline-primary">Submit Contact</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
-</script>
+				</ul>
+			</div>
+		</nav>
+	</script>
 
 	<!-- Template for the contacts -->
 	<script id="contacts-template" type="text/x-handlebars-template">
@@ -115,7 +115,40 @@
 			var filteredContacts = this.contacts.filter(contact => contact.data.fullName.toLowerCase().includes(searchQuery));
 			drawContacts(filteredContacts);
 		}
-	</script>
+		
+		// Function to open and populate the contact profile sidebar
+		function openContactProfile(contact) {
+            document.getElementById('contactProfilePhoto').src = contact.data.profilePhotoUrl || 'https://via.placeholder.com/50';
+            document.getElementById('contactProfileName').textContent = contact.data.fullName;
+            document.getElementById('contactProfileTitle').textContent = contact.data.title;
+            document.getElementById('contactProfileLinkedIn').href = contact.data.linkedinUrl || '#';
+            document.getElementById('contactProfileWebsite').href = contact.data.websiteUrl || '#';
+            new bootstrap.Offcanvas(document.getElementById('contactProfile')).show();
+        }
+
+        // Function to draw contacts with click event listeners
+        function drawContacts(contacts) {
+            const container = document.getElementById('contacts-container');
+            container.innerHTML = ''; // Clear existing content
+            contacts.forEach(contact => {
+                const contactElement = document.createElement('div');
+                contactElement.className = 'media border-bottom p-3';
+                contactElement.innerHTML = `
+                    <img src="${contact.data.profilePhotoUrl || 'https://via.placeholder.com/50'}" width="50" class="mr-3">
+                    <div class="media-body">
+                        <h6 class="m-0">${contact.data.fullName}</h6>
+                        <p class="m-0">${contact.data.title || ''}</p>
+                        <!-- ... (other contact details) ... -->
+                    </div>
+                `;
+                contactElement.addEventListener('click', () => openContactProfile(contact));
+                container.appendChild(contactElement);
+            });
+        }
+
+        // Call drawContacts initially with all contacts
+        drawContacts(this.contacts);
+    </script>
 	<div class="offcanvas offcanvas-end" tabindex="-1" id="contactProfile" aria-labelledby="contactProfileLabel">
 		<div class="offcanvas-header">
 			<h5 id="contactProfileLabel">Contact Profile</h5>
