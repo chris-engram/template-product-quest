@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     loadContactsAlternative();
 });
 
+/**
+ * Loads contacts using an alternative method.
+ */
 const loadContactsAlternative = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const blobId = urlParams.get('blobId');
@@ -29,6 +32,9 @@ const loadContactsAlternative = () => {
     });
 }
 
+/**
+ * Adds a click event listener to each media element.
+ */
 const addClickEventToMedia = () => {
     document.querySelectorAll('.media').forEach(media => {
         media.addEventListener('click', () => {
@@ -47,46 +53,56 @@ const addClickEventToMedia = () => {
     });
 }
 
+/**
+ * Renders the contacts on the page.
+ * 
+ * @param {Array} contacts - The array of contacts to be rendered.
+ * @returns {void}
+ */
 const drawContacts = (contacts) => {
-    // Get the container element where contacts will be displayed
     const container = document.getElementById('contacts-container');
-
-    // Compile the Handlebars template
     const templateScript = document.getElementById('contacts-template').innerHTML;
     const template = Handlebars.compile(templateScript);
 
-    // Create an object with the title and contacts properties
     const data = {
-        title: "Contacts", // or use a dynamic title if needed
         contacts: contacts
     };
 
-    // Use the template to generate HTML for the contacts
-    const html = template(data);
+    container.innerHTML = template(data);
 
-    // Insert the HTML into the container
-    container.innerHTML = html;
-
-    // Add event listeners to the newly created elements
+    // Attach event listeners to each contact item
     contacts.forEach(contact => {
         const contactElement = document.getElementById('contact-' + contact.id);
-        contactElement.addEventListener('click', () => {
-            openContactProfile(contact);
-        });
+        if (contactElement) {
+            contactElement.addEventListener('click', () => {
+                openContactProfile(contact);
+            });
+        }
     });
 };
 
-
-// Function to open and populate the contact profile sidebar
+/**
+ * Opens the contact profile in an offcanvas and updates the contact details.
+ * @param {Object} contact - The contact object containing the contact details.
+ */
 function openContactProfile(contact) {
+    // Update the contact details in the offcanvas
     document.getElementById('contactProfilePhoto').src = contact.data.profilePhotoUrl || 'https://via.placeholder.com/50';
     document.getElementById('contactProfileName').textContent = contact.data.fullName;
-    document.getElementById('contactProfileTitle').textContent = contact.data.title;
+    document.getElementById('contactProfileTitle').textContent = contact.data.title || '';
     document.getElementById('contactProfileLinkedIn').href = contact.data.linkedinUrl || '#';
     document.getElementById('contactProfileWebsite').href = contact.data.websiteUrl || '#';
+
+    // Show the offcanvas
     new bootstrap.Offcanvas(document.getElementById('contactProfile')).show();
 }
 
+/**
+ * Displays all contacts.
+ * @function
+ * @name showAllContacts
+ * @returns {void}
+ */
 const showAllContacts = () => {
     title = "All Contacts";
     drawContacts(contacts);
