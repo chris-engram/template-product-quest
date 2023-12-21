@@ -109,45 +109,10 @@
 		<div class="text-muted text-center p-3">Powered by <a href="https://engram.nexus">Engram Nexus</a></div>
 	</div>
 	<script>
-		// Add your JavaScript function here
-		function searchContacts() {
-			var searchQuery = document.getElementById('search-input').value.toLowerCase();
-			var filteredContacts = this.contacts.filter(contact => contact.data.fullName.toLowerCase().includes(searchQuery));
-			drawContacts(filteredContacts);
-		}
-		
-		// Function to open and populate the contact profile sidebar
-		function openContactProfile(contact) {
-            document.getElementById('contactProfilePhoto').src = contact.data.profilePhotoUrl || 'https://via.placeholder.com/50';
-            document.getElementById('contactProfileName').textContent = contact.data.fullName;
-            document.getElementById('contactProfileTitle').textContent = contact.data.title;
-            document.getElementById('contactProfileLinkedIn').href = contact.data.linkedinUrl || '#';
-            document.getElementById('contactProfileWebsite').href = contact.data.websiteUrl || '#';
-            new bootstrap.Offcanvas(document.getElementById('contactProfile')).show();
-        }
-
-        // Function to draw contacts with click event listeners
-        function drawContacts(contacts) {
-            const container = document.getElementById('contacts-container');
-            container.innerHTML = ''; // Clear existing content
-            contacts.forEach(contact => {
-                const contactElement = document.createElement('div');
-                contactElement.className = 'media border-bottom p-3';
-                contactElement.innerHTML = `
-                    <img src="${contact.data.profilePhotoUrl || 'https://via.placeholder.com/50'}" width="50" class="mr-3">
-                    <div class="media-body">
-                        <h6 class="m-0">${contact.data.fullName}</h6>
-                        <p class="m-0">${contact.data.title || ''}</p>
-                        <!-- ... (other contact details) ... -->
-                    </div>
-                `;
-                contactElement.addEventListener('click', () => openContactProfile(contact));
-                container.appendChild(contactElement);
-            });
-        }
 
         // Call drawContacts initially with all contacts
         drawContacts(this.contacts);
+		
     </script>
 	<div class="offcanvas offcanvas-end" tabindex="-1" id="contactProfile" aria-labelledby="contactProfileLabel">
 		<div class="offcanvas-header">

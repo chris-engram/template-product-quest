@@ -44,14 +44,48 @@ const addClickEventToMedia = () => {
 }
 
 const drawContacts = (contacts) => {
-    const template = Handlebars.compile(document.getElementById("contacts-template").innerHTML);
-    document.getElementById('contacts-container').innerHTML = template({
-        title: this.title,
-        contacts: contacts    
+    const container = document.getElementById('contacts-container');
+    container.innerHTML = ''; // Clear existing content
+
+    contacts.forEach(contact => {
+        const contactElement = document.createElement('div');
+        contactElement.className = 'media border-bottom p-3';
+        contactElement.id = 'contact-' + contact.id;
+        contactElement.innerHTML = `
+            <img src="${contact.data.profilePhotoUrl || 'https://via.placeholder.com/50'}" width="50" class="mr-3">
+            <div class="media-body">
+                <h6 class="m-0">${contact.data.fullName}</h6>
+                <p class="m-0">${contact.data.title || ''}</p>
+                <!-- ... (other contact details) ... -->
+            </div>
+        `;
+
+        contactElement.addEventListener('click', () => {
+            openContactProfile(contact);
+        });
+
+        container.appendChild(contactElement);
     });
+}
+
+// Function to open and populate the contact profile sidebar
+function openContactProfile(contact) {
+    document.getElementById('contactProfilePhoto').src = contact.data.profilePhotoUrl || 'https://via.placeholder.com/50';
+    document.getElementById('contactProfileName').textContent = contact.data.fullName;
+    document.getElementById('contactProfileTitle').textContent = contact.data.title;
+    document.getElementById('contactProfileLinkedIn').href = contact.data.linkedinUrl || '#';
+    document.getElementById('contactProfileWebsite').href = contact.data.websiteUrl || '#';
+    new bootstrap.Offcanvas(document.getElementById('contactProfile')).show();
 }
 
 const showAllContacts = () => {
     this.title = "All Contacts";
     drawContacts(this.contacts);
+}
+
+// Add your JavaScript function here
+function searchContacts() {
+    var searchQuery = document.getElementById('search-input').value.toLowerCase();
+    var filteredContacts = this.contacts.filter(contact => contact.data.fullName.toLowerCase().includes(searchQuery));
+    drawContacts(filteredContacts);
 }
