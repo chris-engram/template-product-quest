@@ -110,9 +110,16 @@
 	</div>
 	<script>
 
+		// Add your JavaScript function here
+		function searchContacts() {
+			var searchQuery = document.getElementById('search-input').value.toLowerCase();
+			var filteredContacts = this.contacts.filter(contact => contact.data.fullName.toLowerCase().includes(searchQuery));
+			drawContacts(filteredContacts);
+		}
+
         // Call drawContacts initially with all contacts
         drawContacts(this.contacts);
-		
+
     </script>
 	<div class="offcanvas offcanvas-end" tabindex="-1" id="contactProfile" aria-labelledby="contactProfileLabel">
 		<div class="offcanvas-header">

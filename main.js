@@ -82,10 +82,3 @@ const showAllContacts = () => {
     this.title = "All Contacts";
     drawContacts(this.contacts);
 }
-
-// Add your JavaScript function here
-function searchContacts() {
-    var searchQuery = document.getElementById('search-input').value.toLowerCase();
-    var filteredContacts = this.contacts.filter(contact => contact.data.fullName.toLowerCase().includes(searchQuery));
-    drawContacts(filteredContacts);
-}
