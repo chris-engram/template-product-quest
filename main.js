@@ -1,3 +1,7 @@
+// Global variables
+let contacts = [];
+let title = '';
+
 // Called once the page has loaded
 document.addEventListener('DOMContentLoaded', () => {
     loadContactsAlternative();
@@ -19,7 +23,7 @@ const loadContactsAlternative = () => {
     })
     .then((response) => response.json())
     .then(json => {
-        this.contacts = json.data.profiles.sort((a, b) => a.votes < b.votes);
+        contacts = json.data.profiles.sort((a, b) => a.votes < b.votes);
         showAllContacts();
         addClickEventToMedia();
     });
@@ -79,6 +83,6 @@ function openContactProfile(contact) {
 }
 
 const showAllContacts = () => {
-    this.title = "All Contacts";
-    drawContacts(this.contacts);
+    title = "All Contacts";
+    drawContacts(contacts);
 }
