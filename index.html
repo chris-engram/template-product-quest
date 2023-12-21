@@ -50,7 +50,7 @@
 	<script id="contacts-template" type="text/x-handlebars-template">
 	<h3>{{title}}</h3>
 	<div class="shadow-sm bg-white rounded-lg">
-		{{#each this.contacts as |contact|}}
+		{{#each contacts as |contact|}}
 			<div class="media border-bottom p-3" id="contact-{{contact.id}}">
 				{{#if contact.data.profilePhotoUrl}}
 					<img src="{{contact.data.profilePhotoUrl}}" width="50" class="mr-3">
