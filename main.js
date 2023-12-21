@@ -48,29 +48,34 @@ const addClickEventToMedia = () => {
 }
 
 const drawContacts = (contacts) => {
+    // Get the container element where contacts will be displayed
     const container = document.getElementById('contacts-container');
-    container.innerHTML = ''; // Clear existing content
 
+    // Compile the Handlebars template
+    const templateScript = document.getElementById('contacts-template').innerHTML;
+    const template = Handlebars.compile(templateScript);
+
+    // Create an object with the title and contacts properties
+    const data = {
+        title: "Contacts", // or use a dynamic title if needed
+        contacts: contacts
+    };
+
+    // Use the template to generate HTML for the contacts
+    const html = template(data);
+
+    // Insert the HTML into the container
+    container.innerHTML = html;
+
+    // Add event listeners to the newly created elements
     contacts.forEach(contact => {
-        const contactElement = document.createElement('div');
-        contactElement.className = 'media border-bottom p-3';
-        contactElement.id = 'contact-' + contact.id;
-        contactElement.innerHTML = `
-            <img src="${contact.data.profilePhotoUrl || 'https://via.placeholder.com/50'}" width="50" class="mr-3">
-            <div class="media-body">
-                <h6 class="m-0">${contact.data.fullName}</h6>
-                <p class="m-0">${contact.data.title || ''}</p>
-                <!-- ... (other contact details) ... -->
-            </div>
-        `;
-
+        const contactElement = document.getElementById('contact-' + contact.id);
         contactElement.addEventListener('click', () => {
             openContactProfile(contact);
         });
-
-        container.appendChild(contactElement);
     });
-}
+};
+
 
 // Function to open and populate the contact profile sidebar
 function openContactProfile(contact) {
