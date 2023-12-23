@@ -37,6 +37,7 @@ const loadContactsAlternative = () => {
 
         // Update the title of the webpage
         document.title = `Contacts (${contacts.length})`;
+        console.log('title', document.title);
     });
 }
 
