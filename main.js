@@ -36,8 +36,7 @@ const loadContactsAlternative = () => {
         addClickEventToMedia();
 
         // Update the title of the webpage
-        document.title = `Contacts (${contacts.length})`;
-        console.log('title', document.title);
+        title = `Contacts (${contacts.length})`;
     });
 }
 
