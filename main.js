@@ -12,7 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 const loadContactsAlternative = () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const blobId = urlParams.get('blobId');
+    let blobId = urlParams.get('blobId');
+
+    // Check if 'blobId' contains commas and convert it into an array if it does
+    if (blobId.includes(',')) {
+        blobId = blobId.split(',');
+    }
 
     const url = "https://leads-search.engram-7ab.workers.dev/manageSearchBlobs/get-main-records";
     const body = {
@@ -29,6 +34,9 @@ const loadContactsAlternative = () => {
         contacts = json.data.profiles.sort((a, b) => a.votes < b.votes);
         showAllContacts();
         addClickEventToMedia();
+
+        // Update the title of the webpage
+        document.title = `Contacts (${contacts.length})`;
     });
 }
 
