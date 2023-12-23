@@ -52,7 +52,7 @@
 
 	<!-- Template for the contacts -->
 	<script id="contacts-template" type="text/x-handlebars-template">
-	<h3>{{title}}</h3>
+	<h3 id="header-title"></h3>
 	<div class="shadow-sm bg-white rounded-lg">
 		{{#each contacts as |contact|}}
 			<div class="media border-bottom p-3" id="contact-{{contact.id}}">
