@@ -113,6 +113,5 @@ function openContactProfile(contact) {
  * @returns {void}
  */
 const showAllContacts = () => {
-    title = "All Contacts";
     drawContacts(contacts);
 }
