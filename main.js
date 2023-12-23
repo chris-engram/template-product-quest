@@ -42,6 +42,7 @@ const loadContactsAlternative = () => {
         const headerTitle = document.getElementById('header-title');
         headerTitle.textContent = title;
     });
+}
 
 /**
  * Adds a click event listener to each media element.
