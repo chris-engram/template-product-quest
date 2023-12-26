@@ -3,7 +3,7 @@
 }
 
 .modal {
-    display: none;
+	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: fixed;
@@ -22,7 +22,6 @@
 	padding: 20px;
 	border: 1px solid #888;
 	width: 80%;
-	height: 100%; /* Add this line */
 }
 
 .close {
@@ -53,12 +52,8 @@
 }
 
 #social-media-icons img {
-	width: 18px; /* Decrease the size by 25% */
-	height: 18px; /* Decrease the size by 25% */
-}
-
-#social-media-icons a:not(:last-child) {
-	margin-right: 18px; /* Add space between the icons */
+	width: 24px; /* Reduce the size of the icons */
+	height: 24px; /* Reduce the size of the icons */
 }
 
 #linkedin-icon[href="#"] img,
