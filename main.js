@@ -94,19 +94,21 @@ const drawContacts = (contacts) => {
 };
 
 /**
- * Opens the contact profile in an offcanvas and updates the contact details.
- * @param {Object} contact - The contact object containing the contact details.
+ * Opens a contact profile in a new window.
+ * 
+ * @param {Object} contact - The contact object containing the profile information.
+ * @param {string} contact.name - The name of the contact.
+ * @param {string} contact.description - The description of the contact.
+ * @returns {void}
  */
 function openContactProfile(contact) {
-    // Update the contact details in the offcanvas
-    document.getElementById('contactProfilePhoto').src = contact.data.profilePhotoUrl || 'https://via.placeholder.com/50';
-    document.getElementById('contactProfileName').textContent = contact.data.fullName;
-    document.getElementById('contactProfileTitle').textContent = contact.data.title || '';
-    document.getElementById('contactProfileLinkedIn').href = contact.data.linkedinUrl || '#';
-    document.getElementById('contactProfileWebsite').href = contact.data.websiteUrl || '#';
+    // Create a new window
+    const profileWindow = window.open('', '_blank');
 
-    // Show the offcanvas
-    new bootstrap.Offcanvas(document.getElementById('contactProfile')).show();
+    // Populate the new window with the contact's profile
+    profileWindow.document.write(`<h1>${contact.name}</h1>`);
+    profileWindow.document.write(`<p>${contact.description}</p>`);
+    // Add more details as needed...
 }
 
 /**
