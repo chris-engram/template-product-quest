@@ -94,7 +94,7 @@ const drawContacts = (contacts) => {
 };
 
 /**
- * Opens a contact profile in a new window.
+ * Opens a contact profile in a modal.
  * 
  * @param {Object} contact - The contact object containing the profile information.
  * @param {string} contact.name - The name of the contact.
@@ -102,13 +102,23 @@ const drawContacts = (contacts) => {
  * @returns {void}
  */
 function openContactProfile(contact) {
-    // Create a new window
-    const profileWindow = window.open('', '_blank');
+    // Select the modal and its elements
+    const modal = document.getElementById('profile-modal');
+    const nameElement = document.getElementById('profile-name');
+    const descriptionElement = document.getElementById('profile-description');
 
-    // Populate the new window with the contact's profile
-    profileWindow.document.write(`<h1>${contact.name}</h1>`);
-    profileWindow.document.write(`<p>${contact.description}</p>`);
-    // Add more details as needed...
+    // Populate the modal with the contact's profile
+    nameElement.textContent = contact.fullName;
+    descriptionElement.textContent = contact.title;
+
+    // Display the modal
+    modal.style.display = 'block';
+
+    // Add an event listener to close the modal when the close button is clicked
+    const closeModalButton = document.getElementById('close-modal');
+    closeModalButton.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
 }
 
 /**
