@@ -112,9 +112,9 @@ function openContactProfile(contact) {
     const twitterIcon = document.getElementById('twitter-icon');
 
     // Populate the modal with the contact's profile
-    photoElement.src = contact.profilePhotoUrl;
-    nameElement.textContent = contact.name;
-    descriptionElement.textContent = contact.description;
+    photoElement.src = contact.profilePhotoUrl || 'default-profile.png'; // Use the default profile photo if the URL is not provided
+    nameElement.textContent = contact.fullName;
+    descriptionElement.textContent = contact.title;
     linkedinIcon.href = contact.linkedinUrl || '#';
     facebookIcon.href = contact.facebookUrl || '#';
     twitterIcon.href = contact.twitterUrl || '#';
