@@ -87,7 +87,7 @@ const drawContacts = (contacts) => {
         const contactElement = document.getElementById('contact-' + contact.id);
         if (contactElement) {
             contactElement.addEventListener('click', () => {
-                openContactProfile(contact);
+                openContactProfile(contact.data);
             });
         }
     });
@@ -103,7 +103,7 @@ const drawContacts = (contacts) => {
  */
 function openContactProfile(contact) {
     console.log('contact', contact);
-    
+
     // Select the modal and its elements
     const modal = document.getElementById('profile-modal');
     const nameElement = document.getElementById('profile-name');
