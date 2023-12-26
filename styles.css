@@ -27,14 +27,13 @@
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 	display: flex; /* Add this line */
 	flex-direction: column; /* Add this line */
-	justify-content: center; /* Add this line */
+	justify-content: flex-start; /* Change this line */
 }
 
 .close {
 	position: absolute;
-	right: 20px;
-	font-size: 28px;
-	font-weight: bold;
+	top: 10px; /* Add this line */
+	right: 10px; /* Add this line */
 }
 
 #profile-photo {
