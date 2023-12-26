@@ -102,6 +102,8 @@ const drawContacts = (contacts) => {
  * @returns {void}
  */
 function openContactProfile(contact) {
+    console.log('contact', contact);
+    
     // Select the modal and its elements
     const modal = document.getElementById('profile-modal');
     const nameElement = document.getElementById('profile-name');
