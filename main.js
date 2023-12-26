@@ -59,8 +59,6 @@ const addClickEventToMedia = () => {
             document.getElementById('contactProfileLinkedIn').href = contact.data.linkedinUrl;
             document.getElementById('contactProfileWebsite').href = contact.data.websiteUrl;
 
-            const contactProfile = new bootstrap.Offcanvas(document.getElementById('contactProfile'));
-            contactProfile.show();
         });
     });
 }
