@@ -118,7 +118,7 @@ function openContactProfile(contact) {
     twitterIcon.href = contact.twitterUrl || '#';
 
     // Display the modal
-    modal.style.display = 'block';
+    modal.style.display = 'flex';
 
     // Add an event listener to close the modal when the close button is clicked
     const closeModalButton = document.getElementById('close-modal');
