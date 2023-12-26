@@ -104,7 +104,7 @@ function openContactProfile(contact) {
     const modal = document.getElementById('profile-modal');
     const photoElement = document.getElementById('profile-photo');
     const nameElement = document.getElementById('profile-name');
-    const descriptionElement = document.getElementById('profile-description');
+    const descriptionElement = document.getElementById('profile-title');
     const linkedinIcon = document.getElementById('linkedin-icon');
     const facebookIcon = document.getElementById('facebook-icon');
     const twitterIcon = document.getElementById('twitter-icon');
@@ -117,8 +117,8 @@ function openContactProfile(contact) {
     facebookIcon.href = contact.facebookUrl || '#';
     twitterIcon.href = contact.twitterUrl || '#';
 
-    // Display the modal
-    modal.style.display = 'flex';
+    // Show the modal
+    modal.style.display = 'block';
 
     // Add an event listener to close the modal when the close button is clicked
     const closeModalButton = document.getElementById('close-modal');
