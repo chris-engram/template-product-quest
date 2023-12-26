@@ -102,16 +102,22 @@ const drawContacts = (contacts) => {
  * @returns {void}
  */
 function openContactProfile(contact) {
-    console.log('contact', contact);
-
     // Select the modal and its elements
     const modal = document.getElementById('profile-modal');
+    const photoElement = document.getElementById('profile-photo');
     const nameElement = document.getElementById('profile-name');
     const descriptionElement = document.getElementById('profile-description');
+    const linkedinIcon = document.getElementById('linkedin-icon');
+    const facebookIcon = document.getElementById('facebook-icon');
+    const twitterIcon = document.getElementById('twitter-icon');
 
     // Populate the modal with the contact's profile
-    nameElement.textContent = contact.fullName;
-    descriptionElement.textContent = contact.title;
+    photoElement.src = contact.profilePhotoUrl;
+    nameElement.textContent = contact.name;
+    descriptionElement.textContent = contact.description;
+    linkedinIcon.href = contact.linkedinUrl || '#';
+    facebookIcon.href = contact.facebookUrl || '#';
+    twitterIcon.href = contact.twitterUrl || '#';
 
     // Display the modal
     modal.style.display = 'block';
