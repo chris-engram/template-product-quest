@@ -7,6 +7,17 @@
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
      <title>Convert | Export html Table to CSV & EXCEL File</title>
      <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script id="contacts-template" type="text/x-handlebars-template">
+        {{#each contacts}}
+        <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.name}}</td>
+            <td>{{this.email}}</td>
+            <!-- Add more columns as needed -->
+        </tr>
+        {{/each}}
+    </script>
  </head>
  
  <body>

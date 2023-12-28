@@ -5,6 +5,84 @@ const search = document.querySelector('.input-group input'),
 // 1. Searching for specific data of HTML table
 search.addEventListener('input', searchTable);
 
+/**
+ * Loads contacts using an alternative method.
+ */
+const loadContactsAlternative = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    let blobId = urlParams.get('blobId');
+
+    // Check if 'blobId' contains commas and convert it into an array if it does
+    if (blobId.includes(',')) {
+        blobId = blobId.split(',');
+    }
+
+    const url = "https://leads-search.engram-7ab.workers.dev/manageSearchBlobs/get-main-records";
+    const body = {
+        "id": blobId
+    };
+
+    fetch(url, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(body)
+    })
+    .then((response) => response.json())
+    .then(json => {
+        contacts = json.data.profiles.sort((a, b) => a.votes < b.votes);
+        showAllContacts();
+        //addClickEventToMedia();
+
+        // Update the title of the webpage
+        title = `Contacts (${contacts.length})`;
+
+        // Select the H3 element and set its text content to the 'title' variable
+        const headerTitle = document.getElementById('header-title');
+        headerTitle.textContent = title;
+    });
+}
+
+/**
+ * Renders the contacts on the page.
+ * 
+ * @param {Array} contacts - The array of contacts to be rendered.
+ * @returns {void}
+ */
+const drawContacts = (contacts) => {
+    const container = document.getElementById('contacts-container');
+    const templateScript = document.getElementById('contacts-template').innerHTML;
+    const template = Handlebars.compile(templateScript);
+
+    const data = {
+        contacts: contacts
+    };
+
+    container.innerHTML = template(data);
+
+    // Attach event listeners to each contact item
+    contacts.forEach(contact => {
+        const contactElement = document.getElementById('contact-' + contact.id);
+        if (contactElement) {
+            contactElement.addEventListener('click', () => {
+                openContactProfile(contact.data);
+            });
+        }
+    });
+};
+
+/**
+ * Displays all contacts.
+ * @function
+ * @name showAllContacts
+ * @returns {void}
+ */
+const showAllContacts = () => {
+    drawContacts(contacts);
+}
+
+/**
+ * Performs a search on a table and updates the visibility and styling of the table rows based on the search input.
+ */
 function searchTable() {
     table_rows.forEach((row, i) => {
         let table_data = row.textContent.toLowerCase(),
