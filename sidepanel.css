@@ -23,7 +23,7 @@ body {
     place-items: center;
 
     color: #ffffff;
-    background: #009578;
+    background: #979797;
     border: none;
     border-radius: 5px 0 0 5px;
     outline: none;
@@ -31,7 +31,7 @@ body {
 }
 
 .side-panel-toggle:hover {
-    background: #007960;
+    background: #979797;
 }
 
 .sp-icon-close {
@@ -40,11 +40,11 @@ body {
 
 .side-panel {
     display: none;
-    width: 200px;
+    width: 400px;
     flex-shrink: 0;
     padding: 20px;
     color: #ffffff;
-    background: #009578;
+    background: #979797;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
 }
 
