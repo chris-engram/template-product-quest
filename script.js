@@ -83,6 +83,18 @@ const contactRows = document.querySelectorAll('tbody tr');
 // Add a click event listener to each contact row
 contactRows.forEach(row => {
     row.addEventListener('click', () => {
+        // Get the contact details
+        const contactName = row.querySelector('.contact-name').textContent;
+        const contactEmail = row.querySelector('.contact-email').textContent;
+        const contactPhone = row.querySelector('.contact-phone').textContent;
+        const contactProfilePhoto = row.querySelector('.contact-profile-photo').src;
+
+        // Update the placeholders in the side panel
+        document.getElementById('contactName').textContent = contactName;
+        document.getElementById('contactEmail').textContent = contactEmail;
+        document.getElementById('contactPhone').textContent = contactPhone;
+        document.getElementById('contactProfilePhoto').src = contactProfilePhoto;
+
         // Open the side panel
         document.querySelector(".wrapper").classList.add("side-panel-open");
     });
