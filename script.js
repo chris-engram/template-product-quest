@@ -97,21 +97,6 @@ const addClickEventToMedia = () => {
     });
 }
 
-// Function to show the profile section
-function showProfileSection(contactData) {
-    // Get the profile section
-    const profileSection = document.getElementById('profile-section');
-
-    // Update the profile section with the contact data
-    profileSection.innerHTML = `
-        <h2>${contactData}</h2>
-        <!-- Add more details here -->
-    `;
-
-    // Show the profile section
-    profileSection.style.display = 'block';
-}
-
 /**
  * Performs a search on a table and updates the visibility and styling of the table rows based on the search input.
  */
