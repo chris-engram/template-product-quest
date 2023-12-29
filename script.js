@@ -83,7 +83,7 @@ const showAllContacts = () => {
     const contactRows = document.querySelectorAll('tbody tr');
 
     // Get the side panel element
-    const sidePanel = document.getElementById('sidePanel');
+    const sidePanel = document.getElementById('side-panel');
 
     // Update contact rows
     contactRows.forEach(row => {
