@@ -1,14 +1,4 @@
-document.querySelector(".side-panel-toggle").addEventListener("click", () => {
-    document.querySelector(".wrapper").classList.toggle("side-panel-open");
-  });
-  
-
-const search = document.querySelector('.input-group input'),
-    table_rows = document.querySelectorAll('tbody tr'),
-    table_headings = document.querySelectorAll('thead th');
-
-// 1. Searching for specific data of HTML table
-search.addEventListener('input', searchTable);
+/********************** MANAGE CONTACTS **********************/
 
 /**
  * Loads contacts using an alternative method.
@@ -132,7 +122,7 @@ const showAllContacts = () => {
             }
 
             // Sources
-            document.getElementById('contactProfileSearchResults').textContent = JSON.stringify(contact.searchResults, 2, null);
+            document.getElementById('contactProfileSearchResults').textContent = JSON.stringify(contact.searchResults.data, 2, null);
 
             // Open the side panel
             document.querySelector(".wrapper").classList.add("side-panel-open");
@@ -140,25 +130,20 @@ const showAllContacts = () => {
     });
 }
 
-/**
- * Adds a click event listener to each media element.
- */
-const addClickEventToMedia = () => {
-    document.querySelectorAll('.media').forEach(media => {
-        media.addEventListener('click', () => {
-            const contactId = media.id.split('-')[1];
-            const contact = contacts.find(contact => contact.id === contactId);
+// Side Panel button
+document.querySelector(".side-panel-toggle").addEventListener("click", () => {
+    document.querySelector(".wrapper").classList.toggle("side-panel-open");
+  });
 
-            /*
-            document.getElementById('contactProfilePhoto').src = contact.data.profilePhotoUrl || 'https://via.placeholder.com/50';
-            document.getElementById('contactProfileName').textContent = contact.data.fullName;
-            document.getElementById('contactProfileTitle').textContent = contact.data.title;
-            document.getElementById('contactProfileLinkedIn').href = contact.data.linkedinUrl;
-            document.getElementById('contactProfileWebsite').href = contact.data.websiteUrl;
-            */
-        });
-    });
-}
+
+/********************** SEARCH CONTACTS **********************/
+
+const search = document.querySelector('.input-group input'),
+    table_rows = document.querySelectorAll('tbody tr'),
+    table_headings = document.querySelectorAll('thead th');
+
+// Search for specific data in HTML table
+search.addEventListener('input', searchTable);
 
 /**
  * Performs a search on a table and updates the visibility and styling of the table rows based on the search input.
@@ -177,8 +162,7 @@ function searchTable() {
     });
 }
 
-// 2. Sorting | Ordering data of HTML table
-
+// Sorting | Order data in HTML table
 table_headings.forEach((head, i) => {
     let sort_asc = true;
     head.onclick = () => {
@@ -197,7 +181,12 @@ table_headings.forEach((head, i) => {
     }
 })
 
-
+/**
+ * Sorts the table rows based on the specified column.
+ * 
+ * @param {number} column - The index of the column to sort by.
+ * @param {boolean} sort_asc - Indicates whether to sort in ascending order (true) or descending order (false).
+ */
 function sortTable(column, sort_asc) {
     [...table_rows].sort((a, b) => {
         let first_row = a.querySelectorAll('td')[column].textContent.toLowerCase(),
@@ -208,12 +197,18 @@ function sortTable(column, sort_asc) {
         .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
 }
 
-// 3. Converting HTML table to PDF
 
+/********************** EXPORT CONTACTS **********************/
+
+// Converting HTML table to PDF
 const pdf_btn = document.querySelector('#toPDF');
 const customers_table = document.querySelector('#customers_table');
 
-
+/**
+ * Converts the given customers table to a PDF and prints it.
+ * 
+ * @param {HTMLElement} customers_table - The HTML element representing the customers table.
+ */
 const toPDF = function (customers_table) {
     const html_code = `
     <!DOCTYPE html>
@@ -233,10 +228,14 @@ pdf_btn.onclick = () => {
     toPDF(customers_table);
 }
 
-// 4. Converting HTML table to JSON
-
+// Convert HTML table to JSON
 const json_btn = document.querySelector('#toJSON');
 
+/**
+ * Converts an HTML table into a JSON string.
+ * @param {HTMLTableElement} table - The HTML table to convert.
+ * @returns {string} - The JSON string representation of the table data.
+ */
 const toJSON = function (table) {
     let table_data = [],
         t_head = [],
@@ -272,10 +271,14 @@ json_btn.onclick = () => {
     downloadFile(json, 'json')
 }
 
-// 5. Converting HTML table to CSV File
-
+// Convert HTML table to CSV File
 const csv_btn = document.querySelector('#toCSV');
 
+/**
+ * Converts an HTML table to a CSV string.
+ * @param {HTMLTableElement} table - The HTML table element to convert.
+ * @returns {string} - The CSV string representation of the table.
+ */
 const toCSV = function (table) {
     // Code For SIMPLE TABLE
     // const t_rows = table.querySelectorAll('tr');
@@ -308,10 +311,15 @@ csv_btn.onclick = () => {
     downloadFile(csv, 'csv', 'customer orders');
 }
 
-// 6. Converting HTML table to EXCEL File
-
+// Convert HTML table to EXCEL File
 const excel_btn = document.querySelector('#toEXCEL');
 
+/**
+ * Converts an HTML table to an Excel-compatible format.
+ * 
+ * @param {HTMLTableElement} table - The HTML table to convert.
+ * @returns {string} - The table data in Excel format.
+ */
 const toExcel = function (table) {
     // Code For SIMPLE TABLE
     // const t_rows = table.querySelectorAll('tr');
@@ -344,6 +352,13 @@ excel_btn.onclick = () => {
     downloadFile(excel, 'excel');
 }
 
+/**
+ * Downloads a file with the given data, file type, and optional file name.
+ * 
+ * @param {string} data - The data to be downloaded.
+ * @param {string} fileType - The type of the file to be downloaded.
+ * @param {string} [fileName=''] - The name of the file to be downloaded (optional).
+ */
 const downloadFile = function (data, fileType, fileName = '') {
     const a = document.createElement('a');
     a.download = fileName;
