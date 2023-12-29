@@ -10,6 +10,7 @@ function convertToMarkdown(obj) {
     for (let key in obj) {
         markdown += `**${key}**: ${obj[key]}\n`;
     }
+    console.log('markdown: ', markdown);
     return markdown;
 }
 
