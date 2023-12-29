@@ -80,6 +80,10 @@ body {
     padding: 10px; /* Some padding */
 }
 
+.social-media-section a {
+    text-decoration: none;
+}
+
 .social-media-section h3 {
     color: black;
 }
