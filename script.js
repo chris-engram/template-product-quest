@@ -35,8 +35,8 @@ const loadContacts = () => {
     .then(json => {
         contacts = json.data.profiles.sort((a, b) => a.id < b.id).map(contact => ({
             id: contact.id,
-            profilePhotoUrl: contact.profilePhotoUrl ? contact.profilePhotoUrl : 'images/default_contact_profile.png',
             ...contact.data,
+            profilePhotoUrl: contact.data.profilePhotoUrl ? contact.data.profilePhotoUrl : 'images/default_contact_profile.png',
             searchResults: contact.searchResults
         }));
 
