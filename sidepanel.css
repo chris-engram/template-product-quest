@@ -17,6 +17,10 @@ body {
     overflow-y: auto;
 }
 
+.contacts-table {
+    padding-left: 10px;
+}
+
 .side-panel-toggle {
     width: 40px;
     height: 40px;
@@ -107,4 +111,5 @@ body {
     font-weight: 400;
     font-size: 12px;
     color: black;
+    word-wrap: break-word;
 }
