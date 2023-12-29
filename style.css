@@ -5,12 +5,15 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
+
 @media print {
- .table, .table__body {
-  overflow: visible;
-  height: auto !important;
-  width: auto !important;
- }
+
+    .table,
+    .table__body {
+        overflow: visible;
+        height: auto !important;
+        width: auto !important;
+    }
 }
 
 /*@page {
@@ -95,18 +98,18 @@ main.table {
 }
 
 
-.table__body::-webkit-scrollbar{
+.table__body::-webkit-scrollbar {
     width: 0.5rem;
     height: 0.5rem;
 }
 
-.table__body::-webkit-scrollbar-thumb{
+.table__body::-webkit-scrollbar-thumb {
     border-radius: .5rem;
     background-color: #0004;
     visibility: hidden;
 }
 
-.table__body:hover::-webkit-scrollbar-thumb{ 
+.table__body:hover::-webkit-scrollbar-thumb {
     visibility: visible;
 }
 
@@ -124,7 +127,9 @@ td img {
     vertical-align: middle;
 }
 
-table, th, td {
+table,
+th,
+td {
     border-collapse: collapse;
     padding: 1rem;
     text-align: left;
@@ -213,15 +218,15 @@ thead th span.icon-arrow {
     height: 1.3rem;
     border-radius: 50%;
     border: 1.4px solid transparent;
-    
+
     text-align: center;
     font-size: 1rem;
-    
+
     margin-left: .5rem;
     transition: .2s ease-in-out;
 }
 
-thead th:hover span.icon-arrow{
+thead th:hover span.icon-arrow {
     border: 1.4px solid #6c00bd;
 }
 
@@ -229,17 +234,44 @@ thead th:hover {
     color: #6c00bd;
 }
 
-thead th.active span.icon-arrow{
+thead th.active span.icon-arrow {
     background-color: #6c00bd;
     color: #fff;
 }
 
-thead th.asc span.icon-arrow{
+thead th.asc span.icon-arrow {
     transform: rotate(180deg);
 }
 
-thead th.active,tbody td.active {
+thead th.active,
+tbody td.active {
     color: #6c00bd;
+}
+
+.profile-section {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.profile-section img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.profile-section h2 {
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+.profile-section p {
+    margin-top: 5px;
+    font-size: 18px;
+    color: #666;
 }
 
 .export__file {
@@ -255,7 +287,7 @@ thead th.active,tbody td.active {
     transition: .2s ease-in-out;
 }
 
-.export__file .export__file-btn:hover { 
+.export__file .export__file-btn:hover {
     background-color: #fff;
     transform: scale(1.15);
     cursor: pointer;
@@ -268,7 +300,7 @@ thead th.active,tbody td.active {
 .export__file .export__file-options {
     position: absolute;
     right: 0;
-    
+
     width: 12rem;
     border-radius: .5rem;
     overflow: hidden;
@@ -277,24 +309,24 @@ thead th.active,tbody td.active {
     opacity: 0;
     transform: scale(.8);
     transform-origin: top right;
-    
+
     box-shadow: 0 .2rem .5rem #0004;
-    
+
     transition: .2s;
 }
 
-.export__file input:checked + .export__file-options {
+.export__file input:checked+.export__file-options {
     opacity: 1;
     transform: scale(1);
     z-index: 100;
 }
 
-.export__file .export__file-options label{
+.export__file .export__file-options label {
     display: block;
     width: 100%;
     padding: .6rem 0;
     background-color: #f2f2f2;
-    
+
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -302,18 +334,18 @@ thead th.active,tbody td.active {
     transition: .2s ease-in-out;
 }
 
-.export__file .export__file-options label:first-of-type{
+.export__file .export__file-options label:first-of-type {
     padding: 1rem 0;
     background-color: #86e49d !important;
 }
 
-.export__file .export__file-options label:hover{
+.export__file .export__file-options label:hover {
     transform: scale(1.05);
     background-color: #fff;
     cursor: pointer;
 }
 
-.export__file .export__file-options img{
+.export__file .export__file-options img {
     width: 2rem;
     height: auto;
 }

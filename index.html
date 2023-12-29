@@ -8,7 +8,7 @@
     <title>Convert | Export html Table to CSV & EXCEL File</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-    <script>Handlebars.registerHelper('indexPlusOne', function(options) {return options.data.index + 1;});</script>
+    <script>Handlebars.registerHelper('indexPlusOne', function (options) { return options.data.index + 1; });</script>
     <script id="contacts-template" type="text/x-handlebars-template">
         {{#each contacts}}
         <tr>
@@ -72,6 +72,13 @@
             </table>
         </section>
     </main>
+
+    <div id="profile-section" class="profile-section">
+        <img src="profile-picture.jpg" alt="Profile Picture">
+        <h2>John Doe</h2>
+        <p>Software Developer</p>
+    </div>
+
     <script src="script.js"></script>
 
 </body>
