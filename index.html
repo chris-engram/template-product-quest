@@ -12,16 +12,20 @@
         {{#each contacts}}
         <tr>
             <td>{{this.id}}</td>
-            <td>{{this.name}}</td>
-            <td>{{this.email}}</td>
-            <!-- Add more columns as needed -->
+            <td> <img src="images/Zinzu Chan Lee.jpg" alt="">{{this.fullName}}</td>
+            <td>{{this.title}}</td>
+            <td>{{this.title}}</td>
+            <td>
+                <p class="status delivered">Delivered</p>
+            </td>
+            <td> <strong> $128.90 </strong></td>
         </tr>
         {{/each}}
     </script>
  </head>
  
  <body>
-     <main class="table" id="customers_table">
+     <main class="table" id="contacts-container">
          <section class="table__header">
              <h1>Customer's Orders</h1>
              <div class="input-group">
@@ -45,7 +49,7 @@
                  <thead>
                      <tr>
                          <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                         <th> Customer <span class="icon-arrow">&UpArrow;</span></th>
+                         <th> Name <span class="icon-arrow">&UpArrow;</span></th>
                          <th> Location <span class="icon-arrow">&UpArrow;</span></th>
                          <th> Order Date <span class="icon-arrow">&UpArrow;</span></th>
                          <th> Status <span class="icon-arrow">&UpArrow;</span></th>
