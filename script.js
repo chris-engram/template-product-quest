@@ -82,8 +82,9 @@ const showAllContacts = () => {
     // Add a click event listener to each contact row
     contactRows.forEach(row => {
         row.addEventListener('click', () => {
-            console.log('Contact row clicked: ', row.id);
+            //console.log('Contact row clicked: ', row.id);
             const contact = contacts.find(contact => contact.id === row.id);
+            console.log('contact: ', contact);
 
             // Update the placeholders in the side panel
             document.getElementById('contactProfilePhoto').src = contact.profilePhotoUrl || 'https://via.placeholder.com/50';
