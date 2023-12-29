@@ -103,12 +103,8 @@ body {
     color: black;
 }
 
-.sources-section a {
+.sources-section p {
     font-weight: 600;
     font-size: 12px;
-    text-decoration: none;
-}
-
-.sources-section p {
     color: black;
 }
