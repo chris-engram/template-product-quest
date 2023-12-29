@@ -1,3 +1,19 @@
+/********************** UTILITIES **********************/
+
+/**
+ * Converts an object to a markdown string.
+ * @param {Object} obj - The object to convert.
+ * @returns {string} The markdown string representation of the object.
+ */
+function convertToMarkdown(obj) {
+    let markdown = '';
+    for (let key in obj) {
+        markdown += `**${key}**: ${obj[key]}\n`;
+    }
+    return markdown;
+}
+
+
 /********************** MANAGE CONTACTS **********************/
 
 /**
@@ -122,7 +138,7 @@ const showAllContacts = () => {
             }
 
             // Sources
-            document.getElementById('contactProfileSearchResults').textContent = JSON.stringify(contact.searchResults.data, 2, null);
+            document.getElementById('contactProfileSearchResults').textContent = convertToMarkdown(contact.searchResults.data);
 
             // Open the side panel
             document.querySelector(".wrapper").classList.add("side-panel-open");
