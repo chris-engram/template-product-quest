@@ -140,7 +140,7 @@ const showAllContacts = () => {
             }
 
             // Sources
-            document.getElementById('contactProfileSearchResults').textContent = convertToHTML(contact.searchResults[0].data);
+            document.getElementById('contactProfileSearchResults').innerHTML = convertToHTML(contact.searchResults[0].data);
 
             // Open the side panel
             document.querySelector(".wrapper").classList.add("side-panel-open");
