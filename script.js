@@ -5,14 +5,14 @@
  * @param {Object} obj - The object to convert.
  * @returns {string} The markdown string representation of the object.
  */
-function convertToMarkdown(obj) {
+function convertToHTML(obj) {
     console.log('obj: ', obj);
-    let markdown = '';
+    let html = '';
     for (let key in obj) {
-        markdown += `**${key}**: ${obj[key]}\n`;
+        html += `<b>${key}</b>: ${obj[key]}<br>`;
     }
-    console.log('markdown: ', markdown);
-    return markdown;
+    console.log('html: ', html);
+    return html;
 }
 
 
@@ -140,7 +140,7 @@ const showAllContacts = () => {
             }
 
             // Sources
-            document.getElementById('contactProfileSearchResults').textContent = convertToMarkdown(contact.searchResults[0].data);
+            document.getElementById('contactProfileSearchResults').textContent = convertToHTML(contact.searchResults[0].data);
 
             // Open the side panel
             document.querySelector(".wrapper").classList.add("side-panel-open");
