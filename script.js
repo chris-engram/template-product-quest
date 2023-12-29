@@ -4,7 +4,6 @@ const search = document.querySelector('.input-group input'),
 
 // 1. Searching for specific data of HTML table
 search.addEventListener('input', searchTable);
-document.addEventListener('DOMContentLoaded', loadContacts);
 
 /**
  * Loads contacts using an alternative method.
@@ -41,6 +40,8 @@ const loadContacts = () => {
         headerTitle.textContent = title;
     });
 }
+
+document.addEventListener('DOMContentLoaded', loadContacts);
 
 /**
  * Renders the contacts on the page.
