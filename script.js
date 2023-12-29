@@ -98,18 +98,38 @@ const showAllContacts = () => {
             document.getElementById('contactProfileTitle').textContent = contact.title;
             document.getElementById('contactProfileMobilePhone').textContent = contact.phoneMobile;
             document.getElementById('contactProfileWorkPhone').textContent = contact.phoneWork;
-            document.getElementById('contactProfileLinkedIn').href = contact.linkedinUrl;
-            if (contact.linkedinUrl) {document.getElementById('contactProfileLinkedIn').style.color = 'black'} 
-            else {document.getElementById('contactProfileLinkedIn').color = 'gray'};
-            document.getElementById('contactProfileFacebook').href = contact.facebookUrl;
-            if (contact.linkedinUrl) {document.getElementById('contactProfileFacebook').style.color = 'black'} 
-            else {document.getElementById('contactProfileFacebook').color = 'gray'};
-            document.getElementById('contactProfileTwitter').href = contact.twitterUrl;
-            if (contact.linkedinUrl) {document.getElementById('contactProfileTwitter').style.color = 'black'} 
-            else {document.getElementById('contactProfileTwitter').color = 'gray'};
-            document.getElementById('contactProfileGithub').href = contact.githubUrl;
-            if (contact.linkedinUrl) {document.getElementById('contactProfileGithub').style.color = 'black'} 
-            else {document.getElementById('contactProfileGithub').color = 'gray'};
+            
+            // LinkedIn
+            if (contact.linkedinUrl) {
+                document.getElementById('contactProfileLinkedIn').href = contact.linkedinUrl;
+                document.getElementById('contactProfileLinkedIn').style.color = 'black';
+            } else {
+                document.getElementById('contactProfileLinkedIn').color = 'gray'
+            };
+            
+            // Facebook
+            if (contact.facebookUrl) {
+                document.getElementById('contactProfileFacebook').href = contact.facebookUrl;
+                document.getElementById('contactProfileFacebook').style.color = 'black';
+            } else {
+                document.getElementById('contactProfileFacebook').style.color = 'gray';
+            }
+
+            // Twitter
+            if (contact.twitterUrl) {
+                document.getElementById('contactProfileTwitter').href = contact.twitterUrl;
+                document.getElementById('contactProfileTwitter').style.color = 'black';
+            } else {
+                document.getElementById('contactProfileTwitter').style.color = 'gray';
+            }
+
+            // Github
+            if (contact.githubUrl) {
+                document.getElementById('contactProfileGithub').href = contact.githubUrl;
+                document.getElementById('contactProfileGithub').style.color = 'black';
+            } else {
+                document.getElementById('contactProfileGithub').style.color = 'gray';
+            }
         });
     });
 }
