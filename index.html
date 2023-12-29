@@ -8,18 +8,18 @@
     <title>Convert | Export html Table to CSV & EXCEL File</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-    
+    <script>Handlebars.registerHelper('indexPlusOne', function(options) {return options.data.index + 1;});</script>
     <script id="contacts-template" type="text/x-handlebars-template">
         {{#each contacts}}
         <tr>
-            <td>{{this.id}}</td>
-            <td> <img src={{this.profilePhotoUrl}} alt="">{{this.fullName}}</td>
+            <td>{{@indexPlusOne}}</td>
+            <td><img src="{{this.profilePhotoUrl}}" alt="">{{this.fullName}}</td>
             <td>{{this.title}}</td>
             <td>{{this.title}}</td>
             <td>
                 <p class="status delivered">Delivered</p>
             </td>
-            <td> <strong> $128.90 </strong></td>
+            <td><strong> $128.90 </strong></td>
         </tr>
         {{/each}}
     </script>
