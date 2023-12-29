@@ -82,8 +82,8 @@ const showAllContacts = () => {
     // Get all the contact rows
     const contactRows = document.querySelectorAll('tbody tr');
 
-    // Get the side panel parent element
-    const sidePanelParent = document.getElementById('sidePanelParent');
+    // Get the side panel element
+    const sidePanel = document.querySelector('.side-panel');
 
     // Update contact rows
     contactRows.forEach(row => {
@@ -135,7 +135,7 @@ const showAllContacts = () => {
             }
 
             // Open the side panel
-            sidePanelParent.classList.add('side-panel-open');
+            sidePanel.classList.add('side-panel-open');
         });
     });
 }
