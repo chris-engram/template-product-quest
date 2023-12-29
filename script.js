@@ -130,6 +130,9 @@ const showAllContacts = () => {
             } else {
                 document.getElementById('contactProfileGithub').style.color = 'gray';
             }
+
+            // Open the side panel
+            sidePanel.style.display = 'block';
         });
     });
 }
