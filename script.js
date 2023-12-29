@@ -132,7 +132,7 @@ const showAllContacts = () => {
             }
 
             // Open the side panel
-            document.querySelector(".wrapper").classList.toggle("side-panel-open");
+            document.querySelector(".wrapper").classList.add("side-panel-open");
         });
     });
 }
