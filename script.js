@@ -30,7 +30,8 @@ const loadContacts = () => {
     .then(json => {
         contacts = json.data.profiles.sort((a, b) => a.id < b.id).map(contact => ({
             id: contact.id,
-            ...contact.data
+            ...contact.data,
+            searchResults: contact.searchResults
         }));
         console.log('contact[0]: ', contacts[0]);
         showAllContacts();
