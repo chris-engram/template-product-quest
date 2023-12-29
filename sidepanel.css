@@ -65,6 +65,11 @@ body {
     margin-bottom: 10px;
 }
 
+#contactProfilePhoto {
+    width: 100px; /* Or any other size */
+    height: 100px; /* Or any other size */
+}
+
 .social-media-section {
     background-color: #f5f5f5; /* Off-white background */
     border: 0px solid gray; /* Gray border */
