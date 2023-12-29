@@ -6,6 +6,7 @@
  * @returns {string} The markdown string representation of the object.
  */
 function convertToMarkdown(obj) {
+    console.log('obj: ', obj);
     let markdown = '';
     for (let key in obj) {
         markdown += `**${key}**: ${obj[key]}\n`;
@@ -139,7 +140,7 @@ const showAllContacts = () => {
             }
 
             // Sources
-            document.getElementById('contactProfileSearchResults').textContent = convertToMarkdown(contact.searchResults.data);
+            document.getElementById('contactProfileSearchResults').textContent = convertToMarkdown(contact.searchResults[0].data);
 
             // Open the side panel
             document.querySelector(".wrapper").classList.add("side-panel-open");
