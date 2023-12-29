@@ -4,12 +4,12 @@ const search = document.querySelector('.input-group input'),
 
 // 1. Searching for specific data of HTML table
 search.addEventListener('input', searchTable);
-document.addEventListener('DOMContentLoaded', loadContactsAlternative);
+document.addEventListener('DOMContentLoaded', loadContacts);
 
 /**
  * Loads contacts using an alternative method.
  */
-const loadContactsAlternative = () => {
+const loadContacts = () => {
     const urlParams = new URLSearchParams(window.location.search);
     let blobId = urlParams.get('blobId');
 
@@ -17,11 +17,10 @@ const loadContactsAlternative = () => {
     if (blobId.includes(',')) {
         blobId = blobId.split(',');
     }
+    console.log(`Loading contacts from blobId: ${blobId}`);
 
     const url = "https://leads-search.engram-7ab.workers.dev/manageSearchBlobs/get-main-records";
-    const body = {
-        "id": blobId
-    };
+    const body = {"id": blobId};
 
     fetch(url, {
         method: 'POST',
@@ -51,25 +50,12 @@ const loadContactsAlternative = () => {
  */
 const drawContacts = (contacts) => {
     const container = document.getElementById('contacts-container');
-    const templateScript = document.getElementById('contacts-template').innerHTML;
-    const template = Handlebars.compile(templateScript);
-
-    const data = {
-        contacts: contacts
-    };
-
-    container.innerHTML = template(data);
-
-    // Attach event listeners to each contact item
-    contacts.forEach(contact => {
-        const contactElement = document.getElementById('contact-' + contact.id);
-        if (contactElement) {
-            contactElement.addEventListener('click', () => {
-                openContactProfile(contact.data);
-            });
-        }
-    });
-};
+    const template = document.getElementById('contacts-template');
+    const source = template.innerHTML;
+    const templateScript = Handlebars.compile(source);
+    const html = templateScript({contacts: contacts});
+    container.innerHTML = html;
+}
 
 /**
  * Displays all contacts.
