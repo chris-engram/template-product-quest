@@ -50,13 +50,13 @@ document.addEventListener('DOMContentLoaded', loadContacts);
  * @returns {void}
  */
 const drawContacts = (contacts) => {
-    const container = document.getElementById('contacts-container');
-    const template = document.getElementById('contacts-template');
-    const source = template.innerHTML;
-    const templateScript = Handlebars.compile(source);
-    const html = templateScript({contacts: contacts});
-    container.innerHTML = html;
-}
+    const templateScript = document.getElementById('contacts-template').innerHTML;
+    const template = Handlebars.compile(templateScript);
+    const html = template({ contacts: contacts });
+
+    // Update only the tbody of the table
+    document.querySelector('table tbody').innerHTML = html;
+};
 
 /**
  * Displays all contacts.
