@@ -131,6 +131,9 @@ const showAllContacts = () => {
                 document.getElementById('contactProfileGithub').style.color = 'gray';
             }
 
+            // Sources
+            document.getElementById('contactProfileSearchResults').textContent = JSON.stringify(contact.searchResults, 2, null);
+
             // Open the side panel
             document.querySelector(".wrapper").classList.add("side-panel-open");
         });
