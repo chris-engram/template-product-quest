@@ -83,6 +83,9 @@ const contactRows = document.querySelectorAll('tbody tr');
 // Add a click event listener to each contact row
 contactRows.forEach(row => {
     row.addEventListener('click', () => {
+
+        console.log('Contact row clicked: ', row.id);
+
         // Get the contact details
         const contactName = row.querySelector('.contact-name').textContent;
         const contactEmail = row.querySelector('.contact-email').textContent;
