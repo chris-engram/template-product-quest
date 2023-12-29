@@ -29,6 +29,7 @@ const loadContacts = () => {
     .then((response) => response.json())
     .then(json => {
         contacts = json.data.profiles.sort((a, b) => a.votes < b.votes);
+        console.log('contact[0]: ', contacts[0]);
         showAllContacts();
         //addClickEventToMedia();
 
