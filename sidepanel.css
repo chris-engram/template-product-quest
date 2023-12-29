@@ -9,16 +9,13 @@ body {
 .wrapper {
     display: flex;
     height: 100vh;
+    padding-left: 10px;
 }
 
 .main {
     flex-grow: 1;
     padding: 10px;
     overflow-y: auto;
-}
-
-.contacts-table {
-    padding-left: 10px;
 }
 
 .side-panel-toggle {
