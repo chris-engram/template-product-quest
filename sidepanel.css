@@ -59,3 +59,10 @@ body {
 .side-panel-open .sp-icon-close {
     display: initial !important;
 }
+
+.social-media-section {
+    background-color: #f5f5f5; /* Off-white background */
+    border: 1px solid gray; /* Gray border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px; /* Some padding */
+}

@@ -93,13 +93,8 @@ const showAllContacts = () => {
             document.getElementById('contactProfileMobilePhone').textContent = contact.phoneMobile;
             document.getElementById('contactProfileWorkPhone').textContent = contact.phoneWork;
             document.getElementById('contactProfileLinkedIn').href = contact.linkedinUrl;
-            if (contact.linkedinUrl) {
-                // If the hyperlink is populated, set the color to black
-                document.getElementById('contactProfileLinkedIn').style.color = 'black';
-            } else {
-                // If the hyperlink is not populated, set the color to gray
-                document.getElementById('contactProfileLinkedIn').color = 'gray';
-            }
+            if (contact.linkedinUrl) {document.getElementById('contactProfileLinkedIn').style.color = 'black'} 
+            else {document.getElementById('contactProfileLinkedIn').color = 'gray'};
             document.getElementById('contactProfileFacebook').href = contact.facebookUrl;
             document.getElementById('contactProfileTwitter').href = contact.twitterUrl;
             document.getElementById('contactProfileGithub').href = contact.githubUrl;
