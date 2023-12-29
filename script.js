@@ -84,14 +84,14 @@ const showAllContacts = () => {
 
     // Update contact rows
     contactRows.forEach(row => {
-    
-        // Contact details
-        const contact = contacts.find(contact => contact.id === row.id);
-        console.log('contact: ', contact);
 
         // Add a click event listener to each contact row
         row.addEventListener('click', () => {
 
+            // Contact details
+            const contact = contacts.find(contact => contact.id === row.id);
+            console.log('contact: ', contact);
+            
             // Update the placeholders in the side panel
             document.getElementById('contactProfilePhoto').src = contact.profilePhotoUrl || 'images/default_contact_profile.png';
             document.getElementById('contactProfileName').textContent = contact.fullName;
