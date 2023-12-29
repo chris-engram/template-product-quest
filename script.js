@@ -91,7 +91,7 @@ const showAllContacts = () => {
             document.getElementById('contactProfileName').textContent = contact.fullName;
             document.getElementById('contactProfileTitle').textContent = contact.title;
             document.getElementById('contactProfileLinkedIn').href = contact.linkedinUrl;
-            document.getElementById('contactProfileWebsite').href = contact.websiteUrl;
+            document.getElementById('contactProfileWebsite').href = contact.facebookUrl;
         });
     });
 }
