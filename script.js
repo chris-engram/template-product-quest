@@ -83,15 +83,14 @@ const showAllContacts = () => {
     contactRows.forEach(row => {
         row.addEventListener('click', () => {
             console.log('Contact row clicked: ', row.id);
-
-            // Get the contact details
-            const contactName = row.querySelector('.contact-name').textContent;
-            const contactEmail = row.querySelector('.contact-email').textContent;
-            const contactPhone = row.querySelector('.contact-phone').textContent;
-            const contactProfilePhoto = row.querySelector('.contact-profile-photo').src;
+            const contact = contacts.find(contact => contact.id === row.id);
 
             // Update the placeholders in the side panel
-            // ...
+            document.getElementById('contactProfilePhoto').src = contact.data.profilePhotoUrl || 'https://via.placeholder.com/50';
+            document.getElementById('contactProfileName').textContent = contact.data.fullName;
+            document.getElementById('contactProfileTitle').textContent = contact.data.title;
+            document.getElementById('contactProfileLinkedIn').href = contact.data.linkedinUrl;
+            document.getElementById('contactProfileWebsite').href = contact.data.websiteUrl;
         });
     });
 }
