@@ -73,16 +73,11 @@ const drawContacts = (contacts) => {
  * @name showAllContacts
  * @returns {void}
  */
-/**
- * @name showAllContacts
- * @returns {void}
- */
 const showAllContacts = () => {
     drawContacts(contacts);
 
     // Get all the contact rows
     const contactRows = document.querySelectorAll('tbody tr');
-    console.log('contactRows', contactRows);
 
     // Add a click event listener to each contact row
     contactRows.forEach(row => {

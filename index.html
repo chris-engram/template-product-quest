@@ -15,7 +15,7 @@
     <script>Handlebars.registerHelper('indexPlusOne', function (options) { return options.data.index + 1; });</script>
     <script id="contacts-template" type="text/x-handlebars-template">
         {{#each contacts}}
-        <tr>
+        <tr id="{{this.id}}">
             <td>{{@indexPlusOne}}</td>
             <td><img src="{{this.profilePhotoUrl}}" alt="">{{this.fullName}}</td>
             <td>{{this.title}}</td>
