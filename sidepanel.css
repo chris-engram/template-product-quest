@@ -97,13 +97,16 @@ body {
     padding: 10px; /* Some padding */
 }
 
+.sources-section h3 {
+    color: black;
+}
+
 .sources-section a {
     font-weight: 600;
     font-size: 12px;
     text-decoration: none;
-    color: rgb(29, 29, 29);
 }
 
-.sources-section h3 {
-    color: black;
+.sources-section p {
+    color: darkgray;
 }
