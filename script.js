@@ -35,9 +35,12 @@ const loadContacts = () => {
     .then(json => {
         contacts = json.data.profiles.sort((a, b) => a.id < b.id).map(contact => ({
             id: contact.id,
+            profilePhotoUrl: contact.profilePhotoUrl ? contact.profilePhotoUrl : 'images/default_contact_profile.png',
             ...contact.data,
             searchResults: contact.searchResults
         }));
+
+        // Render the contacts on the page
         showAllContacts();
         addClickEventToMedia();
 
@@ -79,15 +82,18 @@ const showAllContacts = () => {
     // Get all the contact rows
     const contactRows = document.querySelectorAll('tbody tr');
 
-    // Add a click event listener to each contact row
+    // Update contact rows
     contactRows.forEach(row => {
+    
+        // Contact details
+        const contact = contacts.find(contact => contact.id === row.id);
+        console.log('contact: ', contact);
+
+        // Add a click event listener to each contact row
         row.addEventListener('click', () => {
-            //console.log('Contact row clicked: ', row.id);
-            const contact = contacts.find(contact => contact.id === row.id);
-            console.log('contact: ', contact);
 
             // Update the placeholders in the side panel
-            document.getElementById('contactProfilePhoto').src = contact.profilePhotoUrl || 'https://via.placeholder.com/50';
+            document.getElementById('contactProfilePhoto').src = contact.profilePhotoUrl || 'images/default_contact_profile.png';
             document.getElementById('contactProfileName').textContent = contact.fullName;
             document.getElementById('contactProfileTitle').textContent = contact.title;
             document.getElementById('contactProfileMobilePhone').textContent = contact.phoneMobile;
