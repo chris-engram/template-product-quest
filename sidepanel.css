@@ -49,6 +49,8 @@ body {
     color: #ffffff;
     background: #979797;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+    height: 100vh; /* Full height */
+    overflow-y: auto; /* Add scroll if necessary */
 }
 
 .side-panel-open .side-panel {
