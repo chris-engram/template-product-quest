@@ -102,8 +102,14 @@ const showAllContacts = () => {
             if (contact.linkedinUrl) {document.getElementById('contactProfileLinkedIn').style.color = 'black'} 
             else {document.getElementById('contactProfileLinkedIn').color = 'gray'};
             document.getElementById('contactProfileFacebook').href = contact.facebookUrl;
+            if (contact.linkedinUrl) {document.getElementById('contactProfileFacebook').style.color = 'black'} 
+            else {document.getElementById('contactProfileFacebook').color = 'gray'};
             document.getElementById('contactProfileTwitter').href = contact.twitterUrl;
+            if (contact.linkedinUrl) {document.getElementById('contactProfileTwitter').style.color = 'black'} 
+            else {document.getElementById('contactProfileTwitter').color = 'gray'};
             document.getElementById('contactProfileGithub').href = contact.githubUrl;
+            if (contact.linkedinUrl) {document.getElementById('contactProfileGithub').style.color = 'black'} 
+            else {document.getElementById('contactProfileGithub').color = 'gray'};
         });
     });
 }
