@@ -6,13 +6,30 @@
  * @returns {string} The markdown string representation of the object.
  */
 function convertToHTML(obj) {
-    console.log('obj: ', obj);
     let html = '';
     for (let key in obj) {
-        html += `<b>${key}</b>: ${obj[key]}<br>`;
+        // Check if the value is a URL
+        if (isValidURL(obj[key])) {
+            html += `<a href="${obj[key]}" target="_blank"><b>${key}</b></a><br>`;
+        } else {
+            html += `<b>${key}</b>: ${obj[key]}<br>`;
+        }
     }
-    console.log('html: ', html);
     return html;
+}
+
+/**
+ * Checks if a given string is a valid URL.
+ * @param {string} string - The string to be checked.
+ * @returns {boolean} - Returns true if the string is a valid URL, otherwise returns false.
+ */
+function isValidURL(string) {
+    try {
+        new URL(string);
+        return true;
+    } catch (_) {
+        return false;  
+    }
 }
 
 
