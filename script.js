@@ -90,8 +90,12 @@ const showAllContacts = () => {
             document.getElementById('contactProfilePhoto').src = contact.profilePhotoUrl || 'https://via.placeholder.com/50';
             document.getElementById('contactProfileName').textContent = contact.fullName;
             document.getElementById('contactProfileTitle').textContent = contact.title;
+            document.getElementById('contactProfileMobilePhone').textContent = contact.phoneMobile;
+            document.getElementById('contactProfileWorkPhone').textContent = contact.phoneWork;
             document.getElementById('contactProfileLinkedIn').href = contact.linkedinUrl;
-            document.getElementById('contactProfileWebsite').href = contact.facebookUrl;
+            document.getElementById('contactProfileFacebook').href = contact.facebookUrl;
+            document.getElementById('contactProfileTwitter').href = contact.twitterUrl;
+            document.getElementById('contactProfileGithub').href = contact.githubUrl;
         });
     });
 }
