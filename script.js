@@ -77,6 +77,17 @@ const showAllContacts = () => {
     drawContacts(contacts);
 }
 
+// Get all the contact rows
+const contactRows = document.querySelectorAll('tbody tr');
+
+// Add a click event listener to each contact row
+contactRows.forEach(row => {
+    row.addEventListener('click', () => {
+        // Open the side panel
+        document.querySelector(".wrapper").classList.add("side-panel-open");
+    });
+});
+
 /**
  * Adds a click event listener to each media element.
  */
