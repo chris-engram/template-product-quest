@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Convert | Export html Table to CSV & EXCEL File</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Handlebars -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
     <script>Handlebars.registerHelper('indexPlusOne', function (options) { return options.data.index + 1; });</script>
     <script id="contacts-template" type="text/x-handlebars-template">
@@ -77,6 +80,24 @@
         <img src="profile-picture.jpg" alt="Profile Picture">
         <h2>John Doe</h2>
         <p>Software Developer</p>
+    </div>
+
+    <!-- Side panel -->
+    <div class="wrapper side-panel-open">
+        <div class="main">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
+        </div>
+        <button class="side-panel-toggle" type="button">
+          <span class="material-icons sp-icon-open">keyboard_double_arrow_left</span>
+          <span class="material-icons sp-icon-close">keyboard_double_arrow_right</span>
+        </button>
+        <div class="side-panel">
+      
+        </div>
     </div>
 
     <script src="script.js"></script>

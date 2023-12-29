@@ -1,3 +1,8 @@
+document.querySelector(".side-panel-toggle").addEventListener("click", () => {
+    document.querySelector(".wrapper").classList.toggle("side-panel-open");
+  });
+  
+
 const search = document.querySelector('.input-group input'),
     table_rows = document.querySelectorAll('tbody tr'),
     table_headings = document.querySelectorAll('thead th');
@@ -33,9 +38,8 @@ const loadContacts = () => {
             ...contact.data,
             searchResults: contact.searchResults
         }));
-        console.log('contact[0]: ', contacts[0]);
         showAllContacts();
-        //addClickEventToMedia();
+        addClickEventToMedia();
 
         // Update the title of the webpage
         title = `Contacts (${contacts.length})`;
@@ -73,16 +77,25 @@ const showAllContacts = () => {
     drawContacts(contacts);
 }
 
-// Add event listener to each row
-table_rows.forEach(row => {
-    row.addEventListener('click', () => {
-        // Get the contact data from the row
-        const contactData = row.querySelector('td:nth-child(2)').innerText;
+/**
+ * Adds a click event listener to each media element.
+ */
+const addClickEventToMedia = () => {
+    document.querySelectorAll('.media').forEach(media => {
+        media.addEventListener('click', () => {
+            const contactId = media.id.split('-')[1];
+            const contact = contacts.find(contact => contact.id === contactId);
 
-        // Show the profile section for the contact
-        showProfileSection(contactData);
+            /*
+            document.getElementById('contactProfilePhoto').src = contact.data.profilePhotoUrl || 'https://via.placeholder.com/50';
+            document.getElementById('contactProfileName').textContent = contact.data.fullName;
+            document.getElementById('contactProfileTitle').textContent = contact.data.title;
+            document.getElementById('contactProfileLinkedIn').href = contact.data.linkedinUrl;
+            document.getElementById('contactProfileWebsite').href = contact.data.websiteUrl;
+            */
+        });
     });
-});
+}
 
 // Function to show the profile section
 function showProfileSection(contactData) {
