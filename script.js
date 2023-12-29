@@ -86,11 +86,11 @@ const showAllContacts = () => {
             const contact = contacts.find(contact => contact.id === row.id);
 
             // Update the placeholders in the side panel
-            document.getElementById('contactProfilePhoto').src = contact.data.profilePhotoUrl || 'https://via.placeholder.com/50';
-            document.getElementById('contactProfileName').textContent = contact.data.fullName;
-            document.getElementById('contactProfileTitle').textContent = contact.data.title;
-            document.getElementById('contactProfileLinkedIn').href = contact.data.linkedinUrl;
-            document.getElementById('contactProfileWebsite').href = contact.data.websiteUrl;
+            document.getElementById('contactProfilePhoto').src = contact.profilePhotoUrl || 'https://via.placeholder.com/50';
+            document.getElementById('contactProfileName').textContent = contact.fullName;
+            document.getElementById('contactProfileTitle').textContent = contact.title;
+            document.getElementById('contactProfileLinkedIn').href = contact.linkedinUrl;
+            document.getElementById('contactProfileWebsite').href = contact.websiteUrl;
         });
     });
 }
