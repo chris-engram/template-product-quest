@@ -60,9 +60,18 @@ body {
     display: initial !important;
 }
 
+.side-panel hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .social-media-section {
     background-color: #f5f5f5; /* Off-white background */
     border: 0px solid gray; /* Gray border */
     border-radius: 10px; /* Rounded corners */
     padding: 10px; /* Some padding */
+}
+
+.social-media-section h3 {
+    color: black;
 }
