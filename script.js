@@ -157,8 +157,7 @@ const showAllContacts = () => {
             }
 
             // Sources
-            document.getElementById('contactProfileSearchResults').innerHTML = displaySearchResults(contact);
-            //convertToHTML(contact.searchResults[0].data);
+            displaySearchResults(contact);
 
             // Open the side panel
             document.querySelector(".wrapper").classList.add("side-panel-open");
@@ -175,17 +174,53 @@ const showAllContacts = () => {
  * @param {string} contact.searchResults[].data - The data of the search result.
  */
 function displaySearchResults(contact) {
-    let html = '';
+    // Create a DocumentFragment to batch append the elements
+    const fragment = document.createDocumentFragment();
 
     for (let i = 0; i < contact.searchResults.length; i++) {
-        // Create h3 element for the sourceType
-        html += `<h4>${contact.searchResults[i].sourceType}</h4>`;
+        // Create a div for the drawer
+        const drawer = document.createElement('div');
+
+        // Create h4 element for the sourceType
+        const h4 = document.createElement('h4');
+        h4.textContent = contact.searchResults[i].sourceType;
+
+        // Add the 'keyboard_arrow_right' icon to the header
+        const icon = document.createElement('span');
+        icon.classList.add('material-icons');
+        icon.textContent = 'keyboard_arrow_right';
+        h4.prepend(icon);
 
         // Create p element for the data
-        html += `<p>${convertToHTML(contact.searchResults[i].data)}</p>`;
+        const p = document.createElement('p');
+        p.innerHTML = convertToHTML(contact.searchResults[i].data);
+
+        // Append h4 and p to the drawer
+        drawer.appendChild(h4);
+        drawer.appendChild(p);
+
+        // Add a click event listener to the header
+        h4.addEventListener('click', function() {
+            // Toggle the 'open' class on the drawer
+            drawer.classList.toggle('open');
+
+            // Change the icon
+            const icon = this.querySelector('.material-icons');
+            if (drawer.classList.contains('open')) {
+                icon.textContent = 'keyboard_arrow_down';
+            } else {
+                icon.textContent = 'keyboard_arrow_right';
+            }
+        });
+
+        // Append the drawer to the fragment
+        fragment.appendChild(drawer);
     }
 
-    return html;
+    // Clear the results section and append the fragment
+    const resultsSection = document.querySelector('.sources-section');
+    resultsSection.innerHTML = '';
+    resultsSection.appendChild(fragment);
 }
 
 
@@ -195,32 +230,6 @@ function displaySearchResults(contact) {
 document.querySelector(".side-panel-toggle").addEventListener("click", () => {
     document.querySelector(".wrapper").classList.toggle("side-panel-open");
   });
-
-// Get all the headers
-const headers = document.querySelectorAll('.sources-section h4');
-
-// Add a click event listener to each header
-headers.forEach(header => {
-    // Add the 'keyboard_arrow_right' icon to the header
-    const icon = document.createElement('span');
-    icon.classList.add('material-icons');
-    icon.textContent = 'keyboard_arrow_right';
-    header.prepend(icon);
-
-    header.addEventListener('click', function() {
-        // Toggle the 'open' class on the parent div
-        const div = this.nextElementSibling;
-        div.classList.toggle('open');
-
-        // Change the icon
-        const icon = this.querySelector('.material-icons');
-        if (div.classList.contains('open')) {
-            icon.textContent = 'keyboard_arrow_down';
-        } else {
-            icon.textContent = 'keyboard_arrow_right';
-        }
-    });
-});
 
 
 /********************** SEARCH CONTACTS **********************/
