@@ -36,7 +36,7 @@ function isValidURL(string) {
 /********************** MANAGE CONTACTS **********************/
 
 /**
- * Loads contacts using an alternative method.
+ * Loads contacts to table.
  */
 const loadContacts = () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -81,7 +81,7 @@ const loadContacts = () => {
 document.addEventListener('DOMContentLoaded', loadContacts);
 
 /**
- * Renders the contacts on the page.
+ * Renders all contacts in the table.
  * 
  * @param {Array} contacts - The array of contacts to be rendered.
  * @returns {void}
@@ -157,7 +157,8 @@ const showAllContacts = () => {
             }
 
             // Sources
-            document.getElementById('contactProfileSearchResults').innerHTML = convertToHTML(contact.searchResults[0].data);
+            document.getElementById('contactProfileSearchResults').innerHTML = displaySearchResults(contact);
+            //convertToHTML(contact.searchResults[0].data);
 
             // Open the side panel
             document.querySelector(".wrapper").classList.add("side-panel-open");
@@ -165,6 +166,37 @@ const showAllContacts = () => {
     });
 }
 
+/**
+ * Displays the search results for a contact.
+ * 
+ * @param {Object} contact - The contact object containing search results.
+ * @param {Array} contact.searchResults - The array of search results.
+ * @param {string} contact.searchResults[].sourceType - The source type of the search result.
+ * @param {string} contact.searchResults[].data - The data of the search result.
+ */
+function displaySearchResults(contact) {
+    const resultsSection = document.getElementById('resultsSection');
+
+    // Clear any existing results
+    html = '';
+
+    for (let i = 0; i < contact.searchResults.length; i++) {
+        // Create h3 element for the sourceType
+        const h3 = document.createElement('h3');
+        h3.textContent = contact.searchResults[i].sourceType;
+
+        // Create p element for the data
+        const p = document.createElement('p');
+        p.innerHTML = convertToHTML(contact.searchResults[i].data);
+
+        // Append h3 and p to the results section
+        resultsSection.appendChild(h3);
+        resultsSection.appendChild(p);
+    }
+}
+
+// Usage
+displaySearchResults(contact);
 // Side Panel button
 document.querySelector(".side-panel-toggle").addEventListener("click", () => {
     document.querySelector(".wrapper").classList.toggle("side-panel-open");
