@@ -75,8 +75,8 @@ const loadContacts = () => {
         const headerTitle = document.getElementById('header-title');
         headerTitle.textContent = title;
 
-        // Simulate a click on the first contact row
-        document.querySelector('.contact-row').click();
+        // Simulate a click on the first row of the contacts table
+        document.querySelector('#contacts-container .table__body tbody tr').click();
     });
 }
 
