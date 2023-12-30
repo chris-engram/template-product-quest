@@ -11,12 +11,6 @@ body {
     height: 100vh;
 }
 
-.main {
-    flex-grow: 1;
-    padding: 10px;
-    overflow-y: auto;
-}
-
 .side-panel-toggle {
     width: 40px;
     height: 40px;
