@@ -11,29 +11,6 @@ body {
     height: 100vh;
 }
 
-.side-panel-toggle {
-    width: 40px;
-    height: 40px;
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-
-    color: #ffffff;
-    background: #979797;
-    border: none;
-    border-radius: 2px 0 0 2px;
-    outline: none;
-    cursor: pointer;
-}
-
-.side-panel-toggle:hover {
-    background: #979797;
-}
-
-.sp-icon-close {
-    display: none !important;
-}
-
 .side-panel {
     font-family: 'Signika', sans-serif;
     display: none;
@@ -48,15 +25,7 @@ body {
 }
 
 .side-panel-open .side-panel {
-    display: initial;
-}
-
-.side-panel-open .sp-icon-open {
-    display: none !important;
-}
-
-.side-panel-open .sp-icon-close {
-    display: initial !important;
+    display: block;
 }
 
 .side-panel hr {
