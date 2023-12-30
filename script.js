@@ -175,6 +175,7 @@ const showAllContacts = () => {
  * @param {string} contact.searchResults[].data - The data of the search result.
  */
 function displaySearchResults(contact) {
+    console.log('Constructing search results: ', contact.searchResults);
     const resultsSection = document.querySelector('.sources-section');
 
     // Clear any existing results
