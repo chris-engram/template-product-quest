@@ -252,6 +252,9 @@ function searchTable() {
     document.querySelectorAll('tbody tr:not(.hide)').forEach((visible_row, i) => {
         visible_row.style.backgroundColor = (i % 2 == 0) ? 'transparent' : '#0000000b';
     });
+
+    // Simulate a click on the first row of the contacts table
+    document.querySelector('#contacts-container .table__body tbody tr').click();
 }
 
 // Sorting | Order data in HTML table
