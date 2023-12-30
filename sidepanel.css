@@ -101,12 +101,17 @@ body {
 
 .sources-section h3 {
     color: black;
+    display: flex; /* Use flexbox for easy alignment */
+}
+
+.sources-section h4 {
+    color: black;
     cursor: pointer; /* Change cursor to pointer when hovering over headers */
     display: flex; /* Use flexbox for easy alignment */
     align-items: center; /* Center items vertically */
 }
 
-.sources-section h3 .material-icons {
+.sources-section h4 .material-icons {
     margin-right: 5px; /* Add some space between the icon and the text */
 }
 

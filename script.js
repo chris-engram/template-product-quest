@@ -179,7 +179,7 @@ function displaySearchResults(contact) {
 
     for (let i = 0; i < contact.searchResults.length; i++) {
         // Create h3 element for the sourceType
-        html += `<h3>${contact.searchResults[i].sourceType}</h3>`;
+        html += `<h4>${contact.searchResults[i].sourceType}</h4>`;
 
         // Create p element for the data
         html += `<p>${convertToHTML(contact.searchResults[i].data)}</p>`;
@@ -197,7 +197,7 @@ document.querySelector(".side-panel-toggle").addEventListener("click", () => {
   });
 
 // Get all the headers
-const headers = document.querySelectorAll('.sources-section h3');
+const headers = document.querySelectorAll('.sources-section h4');
 
 // Add a click event listener to each header
 headers.forEach(header => {
