@@ -115,7 +115,7 @@ body {
     margin-right: 5px; /* Add some space between the icon and the text */
 }
 
-.sources-section div {
+.sources-section div p {
     display: none; /* Hide paragraphs by default */
 }
 
