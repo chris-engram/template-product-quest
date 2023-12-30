@@ -81,7 +81,7 @@ const loadContacts = () => {
 document.addEventListener('DOMContentLoaded', loadContacts);
 
 // Simulate a click on the first row of the contacts table
-document.querySelector('#contacts-container .table__body tbody tr').click();
+//document.querySelector('#contacts-container .table__body tbody tr').click();
 
 /**
  * Renders all contacts in the table.
