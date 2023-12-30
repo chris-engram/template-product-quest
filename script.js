@@ -193,6 +193,32 @@ document.querySelector(".side-panel-toggle").addEventListener("click", () => {
     document.querySelector(".wrapper").classList.toggle("side-panel-open");
   });
 
+// Get all the headers
+const headers = document.querySelectorAll('.sources-section h3');
+
+// Add a click event listener to each header
+headers.forEach(header => {
+    // Add the 'keyboard_arrow_right' icon to the header
+    const icon = document.createElement('span');
+    icon.classList.add('material-icons');
+    icon.textContent = 'keyboard_arrow_right';
+    header.prepend(icon);
+
+    header.addEventListener('click', function() {
+        // Toggle the 'open' class on the parent div
+        const div = this.nextElementSibling;
+        div.classList.toggle('open');
+
+        // Change the icon
+        const icon = this.querySelector('.material-icons');
+        if (div.classList.contains('open')) {
+            icon.textContent = 'keyboard_arrow_down';
+        } else {
+            icon.textContent = 'keyboard_arrow_right';
+        }
+    });
+});
+
 
 /********************** SEARCH CONTACTS **********************/
 

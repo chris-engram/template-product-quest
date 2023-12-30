@@ -102,10 +102,20 @@ body {
 .sources-section h3 {
     color: black;
     cursor: pointer; /* Change cursor to pointer when hovering over headers */
+    display: flex; /* Use flexbox for easy alignment */
+    align-items: center; /* Center items vertically */
+}
+
+.sources-section h3 .material-icons {
+    margin-right: 5px; /* Add some space between the icon and the text */
 }
 
 .sources-section div {
     display: none; /* Hide paragraphs by default */
+}
+
+.sources-section div.open p {
+    display: block; /* Show paragraphs when their parent has the 'open' class */
 }
 
 .sources-section p {
