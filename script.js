@@ -67,7 +67,6 @@ const loadContacts = () => {
 
         // Render the contacts on the page
         showAllContacts();
-        addClickEventToMedia();
 
         // Update the title of the webpage
         title = `Contacts (${contacts.length})`;
