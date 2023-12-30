@@ -69,7 +69,7 @@ const loadContacts = () => {
         showAllContacts();
 
         // Update the title of the webpage
-        title = `Contacts (${contacts.length})`;
+        document.querySelector('.table__header h1').textContent = `Pitch Black Contacts (${contacts.length})`;
 
         // Select the H3 element and set its text content to the 'title' variable
         const headerTitle = document.getElementById('header-title');
@@ -77,6 +77,7 @@ const loadContacts = () => {
     });
 }
 
+// Load contacts when the DOM is loaded
 document.addEventListener('DOMContentLoaded', loadContacts);
 
 /**
