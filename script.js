@@ -224,14 +224,6 @@ function displaySearchResults(contact) {
 }
 
 
-/********************** SIDE PANEL **********************/
-
-// Side Panel button
-document.querySelector(".side-panel-toggle").addEventListener("click", () => {
-    document.querySelector(".wrapper").classList.toggle("side-panel-open");
-  });
-
-
 /********************** SEARCH CONTACTS **********************/
 
 const search = document.querySelector('.input-group input'),
