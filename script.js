@@ -73,15 +73,14 @@ const loadContacts = () => {
 
         // Select the H3 element and set its text content to the 'title' variable
         const headerTitle = document.getElementById('header-title');
-        headerTitle.textContent = title;
+    
+        // Simulate a click on the first row of the contacts table
+        document.querySelector('#contacts-container .table__body tbody tr').click();
     });
 }
 
 // Load contacts when the DOM is loaded
 document.addEventListener('DOMContentLoaded', loadContacts);
-
-// Simulate a click on the first row of the contacts table
-//document.querySelector('#contacts-container .table__body tbody tr').click();
 
 /**
  * Renders all contacts in the table.
