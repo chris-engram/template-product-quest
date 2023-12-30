@@ -175,31 +175,17 @@ const showAllContacts = () => {
  * @param {string} contact.searchResults[].data - The data of the search result.
  */
 function displaySearchResults(contact) {
-    console.log('Constructing search results: ', contact.searchResults);
-    const resultsSection = document.querySelector('.sources-section');
-
-    // Clear any existing results
-    resultsSection.innerHTML = '';
+    let html = '';
 
     for (let i = 0; i < contact.searchResults.length; i++) {
-        // Create a div for the drawer
-        const drawer = document.createElement('div');
-
         // Create h3 element for the sourceType
-        const h3 = document.createElement('h3');
-        h3.textContent = contact.searchResults[i].sourceType;
+        html += `<h3>${contact.searchResults[i].sourceType}</h3>`;
 
         // Create p element for the data
-        const p = document.createElement('p');
-        p.innerHTML = convertToHTML(contact.searchResults[i].data);
-
-        // Append h3 and p to the drawer
-        drawer.appendChild(h3);
-        drawer.appendChild(p);
-
-        // Append the drawer to the results section
-        resultsSection.appendChild(drawer);
+        html += `<p>${convertToHTML(contact.searchResults[i].data)}</p>`;
     }
+
+    return html;
 }
 
 // Side Panel button
