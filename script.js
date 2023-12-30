@@ -188,6 +188,9 @@ function displaySearchResults(contact) {
     return html;
 }
 
+
+/********************** SIDE PANEL **********************/
+
 // Side Panel button
 document.querySelector(".side-panel-toggle").addEventListener("click", () => {
     document.querySelector(".wrapper").classList.toggle("side-panel-open");
