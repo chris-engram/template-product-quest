@@ -79,9 +79,6 @@ const loadContacts = () => {
     });
 }
 
-// Load contacts when the DOM is loaded
-document.addEventListener('DOMContentLoaded', loadContacts);
-
 /**
  * Renders all contacts in the table.
  * 
@@ -225,6 +222,9 @@ function displaySearchResults(contact) {
     resultsDiv.appendChild(fragment);
 }
 
+// Load contacts when the DOM is loaded
+document.addEventListener('DOMContentLoaded', loadContacts);
+
 
 /********************** SEARCH CONTACTS **********************/
 
@@ -239,6 +239,8 @@ search.addEventListener('input', searchTable);
  * Performs a search on a table and updates the visibility and styling of the table rows based on the search input.
  */
 function searchTable() {
+    const table_rows = document.querySelectorAll('tbody tr');
+
     table_rows.forEach((row, i) => {
         let table_data = row.textContent.toLowerCase(),
             search_data = search.value.toLowerCase();
