@@ -216,10 +216,10 @@ function displaySearchResults(contact) {
         fragment.appendChild(drawer);
     }
 
-    // Clear the results section and append the fragment
-    const resultsSection = document.querySelector('.sources-section');
-    resultsSection.innerHTML = '';
-    resultsSection.appendChild(fragment);
+    // Select the div with the id 'contactProfileSearchResults' and append the fragment to it
+    const resultsDiv = document.getElementById('contactProfileSearchResults');
+    resultsDiv.innerHTML = '';
+    resultsDiv.appendChild(fragment);
 }
 
 
