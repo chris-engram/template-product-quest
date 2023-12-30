@@ -28,7 +28,6 @@ body {
     justify-content: center;
     align-items: center;
     padding-left: 20px;
-    padding-right: 20px;
 }
 
 main.table {
@@ -41,6 +40,7 @@ main.table {
     border-radius: .8rem;
 
     overflow: hidden;
+    padding-right: 20px;
 }
 
 .table__header {
